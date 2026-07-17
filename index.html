@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MedConnect Events — Pharma & Medical Conferences, UK & US</title>
+<style>
+  :root {
+    /* Deep Blue + White — classic pharma trust, premium light */
+    --bg: #F5F8FC;
+    --bg-alt: #E9F0FA;
+    --surface: #FFFFFF;
+    --ink: #0B1B34;
+    --text: #2C3A4F;
+    --muted: #5C6B85;
+    --line: #E1E8F2;
+    --line-soft: #EEF3FA;
+    --green: #1D4ED8;
+    --green-ink: #1E40AF;
+    --green-soft: #E7EDFC;
+    --gold: #0EA5A0;
+    --gold-soft: #DCF2F0;
+    --coral: #C0562F;
+    --coral-soft: #F7E7DE;
+    --fmt-inperson: #1D4ED8;
+    --fmt-virtual: #4C5CC7;
+    --fmt-hybrid: #0EA5A0;
+    --uk: #2A5BD7;
+    --us: #C0492E;
+    --sh-sm: 0 1px 2px rgba(48,40,20,0.05);
+    --sh: 0 4px 14px rgba(48,40,20,0.06), 0 18px 42px -18px rgba(48,40,20,0.14);
+    --sh-lg: 0 30px 70px -30px rgba(48,40,20,0.26);
+    --maxw: 1180px;
+    --sans: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    --serif: "Iowan Old Style", "Palatino Linotype", Palatino, "Sitka Text", Georgia, serif;
+    --r: 16px;
+    --ease: cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  :root[data-theme="dark"] {
+    --bg: #0A0F1A; --bg-alt: #0F1626; --surface: #111A2B; --ink: #EAF1FB; --text: #D2DCEC;
+    --muted: #8A99B5; --line: rgba(255,255,255,0.10); --line-soft: rgba(255,255,255,0.06);
+    --green: #6C93F5; --green-ink: #93B0F8; --green-soft: rgba(108,147,245,0.16);
+    --gold: #2FD4C4; --gold-soft: rgba(47,212,196,0.14); --coral: #E0805C; --coral-soft: rgba(224,128,92,0.14);
+    --line: rgba(255,255,255,0.10);
+    --sh-sm: 0 1px 2px rgba(0,0,0,0.4); --sh: 0 4px 14px rgba(0,0,0,0.4), 0 18px 42px -18px rgba(0,0,0,0.6);
+    --sh-lg: 0 30px 70px -30px rgba(0,0,0,0.7);
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; font-family: var(--sans); background: var(--bg); color: var(--text); line-height: 1.6; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+  a { color: inherit; text-decoration: none; }
+  h1,h2,h3,h4 { margin: 0; font-family: var(--serif); color: var(--ink); line-height: 1.1; letter-spacing: -0.02em; text-wrap: balance; font-weight: 600; }
+  .wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 26px; }
+  .eyebrow { font-family: var(--sans); font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 700; color: var(--green); margin: 0 0 16px; display: inline-flex; align-items: center; gap: 9px; }
+  .eyebrow::before { content: ""; width: 20px; height: 1.5px; background: var(--gold); }
+  .eyebrow.center { justify-content: center; }
+  .btn { display: inline-flex; align-items: center; justify-content: center; gap: 9px; padding: 13px 24px; border-radius: 11px; font-family: var(--sans);
+    font-weight: 620; font-size: 15px; cursor: pointer; border: 1px solid transparent; transition: transform .2s var(--ease), box-shadow .25s var(--ease), background .2s, color .2s, border-color .2s; }
+  .btn-primary { background: var(--green); color: #FBFDF9; box-shadow: 0 10px 24px -10px rgba(29,78,216,0.5); }
+  .btn-primary:hover { transform: translateY(-2px); background: var(--green-ink); box-shadow: 0 16px 30px -10px rgba(29,78,216,0.55); }
+  .btn-coral { background: var(--coral); color: #fff; box-shadow: 0 10px 24px -10px rgba(192,86,47,0.45); }
+  .btn-coral:hover { transform: translateY(-2px); box-shadow: 0 16px 30px -10px rgba(192,86,47,0.5); }
+  .btn-ghost { background: var(--surface); color: var(--ink); border-color: var(--line); }
+  .btn-ghost:hover { border-color: var(--green); color: var(--green); transform: translateY(-2px); }
+  .btn-sm { padding: 9px 16px; font-size: 13.5px; border-radius: 9px; }
+
+  /* Reveal */
+  .reveal { opacity: 0; transform: translateY(22px); }
+  .reveal.in { opacity: 1; transform: none; transition: opacity .6s var(--ease), transform .6s var(--ease); }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
+    .reveal { opacity: 1 !important; transform: none !important; }
+  }
+
+  /* NAV */
+  header.nav { position: sticky; top: 0; z-index: 70; background: color-mix(in srgb, var(--bg) 84%, transparent); -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px); border-bottom: 1px solid transparent; transition: border-color .25s, box-shadow .25s, background .25s; }
+  header.nav.scrolled { border-bottom-color: var(--line); box-shadow: var(--sh-sm); }
+  .nav-inner { display: flex; align-items: center; justify-content: space-between; height: 74px; }
+  .brand { display: flex; align-items: center; gap: 11px; font-family: var(--serif); font-weight: 600; font-size: 21px; letter-spacing: -0.02em; color: var(--ink); }
+  .brand .mark { width: 36px; height: 36px; border-radius: 10px; background: linear-gradient(140deg, var(--green), #3B82F6); display: grid; place-items: center; flex: none; box-shadow: 0 6px 16px -6px rgba(29,78,216,0.5); }
+  .brand b { color: var(--gold); font-weight: 600; }
+  .nav-links { display: flex; gap: 30px; }
+  .nav-links a { font-family: var(--sans); font-size: 14.5px; color: var(--muted); font-weight: 550; transition: color .2s; }
+  .nav-links a:hover { color: var(--ink); }
+  .nav-right { display: flex; align-items: center; gap: 12px; }
+  .theme-btn { background: var(--surface); border: 1px solid var(--line); color: var(--muted); width: 40px; height: 40px; border-radius: 10px; cursor: pointer; display: grid; place-items: center; font-size: 15px; transition: color .2s, border-color .2s; }
+  .theme-btn:hover { color: var(--green); border-color: var(--green); }
+  @media (max-width: 940px) { .nav-links { display: none; } }
+  @media (max-width: 560px) { .nav-right .btn-ghost { display: none; } }
+
+  /* HERO */
+  .hero { position: relative; overflow: hidden; padding: 72px 0 64px; }
+  .hero::before { content:""; position: absolute; top: -240px; right: -180px; width: 620px; height: 620px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(29,78,216,0.10), transparent 68%); pointer-events: none; }
+  .hero::after { content:""; position: absolute; bottom: -260px; left: -160px; width: 520px; height: 520px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(14,165,160,0.09), transparent 68%); pointer-events: none; }
+  .hero-grid { position: relative; z-index: 2; display: grid; grid-template-columns: 1.08fr 0.92fr; gap: 52px; align-items: center; }
+  .hero .pill { display: inline-flex; align-items: center; gap: 9px; padding: 7px 15px 7px 10px; border-radius: 999px; border: 1px solid var(--line); background: var(--surface); font-family: var(--sans); font-size: 13px; color: var(--muted); box-shadow: var(--sh-sm); margin-bottom: 26px; }
+  .hero .pill .live { width: 7px; height: 7px; border-radius: 50%; background: var(--coral); box-shadow: 0 0 0 0 rgba(192,86,47,0.5); animation: pulse 2.4s infinite; }
+  @keyframes pulse { 0%{box-shadow:0 0 0 0 rgba(192,86,47,0.45);} 70%{box-shadow:0 0 0 8px rgba(192,86,47,0);} 100%{box-shadow:0 0 0 0 rgba(192,86,47,0);} }
+  .hero h1 { font-size: clamp(38px, 5.6vw, 62px); line-height: 1.04; letter-spacing: -0.03em; font-weight: 600; }
+  .hero h1 .u { color: var(--green); font-style: italic; }
+  .hero .lede { font-family: var(--sans); font-size: clamp(16px, 1.9vw, 19px); color: var(--muted); max-width: 46ch; margin: 22px 0 0; }
+
+  /* Search bar */
+  .searchbar { margin-top: 30px; background: var(--surface); border: 1px solid var(--line); border-radius: 16px; box-shadow: var(--sh); padding: 12px; display: flex; gap: 8px; align-items: stretch; flex-wrap: wrap; }
+  .searchbar .field { flex: 1; min-width: 120px; display: flex; flex-direction: column; padding: 6px 12px; border-radius: 10px; transition: background .2s; }
+  .searchbar .field:hover { background: var(--bg); }
+  .searchbar .field + .field { border-left: 1px solid var(--line-soft); }
+  .searchbar label { font-family: var(--sans); font-size: 10.5px; letter-spacing: 0.09em; text-transform: uppercase; color: var(--muted); font-weight: 700; margin-bottom: 2px; }
+  .searchbar select { border: none; background: transparent; font-family: var(--sans); font-size: 14.5px; font-weight: 600; color: var(--ink); cursor: pointer; padding: 0; }
+  .searchbar select:focus { outline: none; }
+  .searchbar .find { flex: 0 0 auto; }
+  .quick-chips { margin-top: 18px; display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+  .quick-chips .ql { font-family: var(--sans); font-size: 12.5px; color: var(--muted); margin-right: 2px; }
+  .qchip { font-family: var(--sans); font-size: 13px; font-weight: 600; padding: 6px 13px; border-radius: 999px; border: 1px solid var(--line); background: var(--surface); color: var(--text); cursor: pointer; transition: all .18s var(--ease); }
+  .qchip:hover { border-color: var(--green); color: var(--green); transform: translateY(-1px); }
+
+  /* Featured card */
+  .feat { background: var(--surface); border: 1px solid var(--line); border-radius: 22px; box-shadow: var(--sh-lg); overflow: hidden; }
+  .feat .cover { height: 168px; position: relative; padding: 16px; display: flex; justify-content: space-between; align-items: flex-start; }
+  .feat .cover .fbadge { font-family: var(--sans); font-size: 11px; font-weight: 750; letter-spacing: 0.05em; text-transform: uppercase; color: #fff; padding: 6px 12px; border-radius: 999px; background: rgba(0,0,0,0.28); -webkit-backdrop-filter: blur(4px); backdrop-filter: blur(4px); }
+  .feat .cover .datechip { background: rgba(255,255,255,0.96); border-radius: 12px; padding: 8px 13px; text-align: center; box-shadow: 0 6px 16px rgba(0,0,0,0.18); }
+  .feat .cover .datechip .d { font-family: var(--serif); font-size: 24px; font-weight: 600; color: #0B1B34; line-height: 1; }
+  .feat .cover .datechip .m { font-family: var(--sans); font-size: 10.5px; letter-spacing: 0.1em; text-transform: uppercase; color: #5C6B85; font-weight: 700; margin-top: 2px; }
+  .feat .fbody { padding: 22px 24px 24px; }
+  .feat .ftag { font-family: var(--sans); font-size: 11.5px; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; color: var(--gold); }
+  .feat h3 { font-size: 23px; margin: 8px 0 12px; letter-spacing: -0.02em; }
+  .feat .fmeta { font-family: var(--sans); display: flex; align-items: center; gap: 8px; font-size: 13.5px; color: var(--muted); margin-bottom: 16px; }
+  .feat .fmeta svg { color: var(--green); flex: none; }
+  .feat .scarcity { font-family: var(--sans); display: inline-flex; align-items: center; gap: 7px; font-size: 12.5px; font-weight: 620; color: var(--coral); background: var(--coral-soft); padding: 6px 12px; border-radius: 999px; margin-bottom: 18px; }
+  .feat .frow { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+  .feat .fprice { font-family: var(--sans); font-size: 13.5px; color: var(--muted); }
+  .feat .fprice b { font-family: var(--serif); color: var(--ink); font-size: 22px; font-weight: 600; }
+  @media (max-width: 900px) { .hero-grid { grid-template-columns: 1fr; gap: 40px; } .feat { max-width: 460px; } }
+
+  /* FORMAT STRIP */
+  .fstrip { border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); background: var(--surface); }
+  .fstrip-grid { display: grid; grid-template-columns: repeat(3,1fr); }
+  .fstrip .fs { display: flex; gap: 16px; align-items: center; padding: 30px 26px; border-right: 1px solid var(--line-soft); }
+  .fstrip .fs:last-child { border-right: none; }
+  .fstrip .fs .ic { width: 46px; height: 46px; border-radius: 12px; display: grid; place-items: center; flex: none; }
+  .fstrip .fs h4 { font-family: var(--sans); font-size: 16px; font-weight: 700; letter-spacing: -0.01em; margin-bottom: 2px; }
+  .fstrip .fs p { font-family: var(--sans); font-size: 13.5px; color: var(--muted); margin: 0; }
+  @media (max-width: 780px) { .fstrip-grid { grid-template-columns: 1fr; } .fstrip .fs { border-right: none; border-bottom: 1px solid var(--line-soft); } .fstrip .fs:last-child { border-bottom: none; } }
+
+  /* SECTIONS */
+  .sec { padding: 92px 0; position: relative; }
+  .sec.alt { background: var(--bg-alt); }
+  .sec-head { max-width: 640px; margin-bottom: 44px; }
+  .sec-head.center { margin-left: auto; margin-right: auto; text-align: center; }
+  .sec-head h2 { font-size: clamp(30px, 4.4vw, 46px); letter-spacing: -0.025em; }
+  .sec-head p { font-family: var(--sans); color: var(--muted); font-size: 17px; margin-top: 16px; }
+
+  /* EVENTS */
+  .events-toolbar { display: flex; align-items: center; justify-content: space-between; gap: 18px; flex-wrap: wrap; margin-bottom: 22px; }
+  .filters { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+  .filters .fglabel { font-family: var(--sans); font-size: 11px; letter-spacing: 0.07em; text-transform: uppercase; color: var(--muted); font-weight: 700; margin: 0 4px 0 10px; }
+  .filters .fglabel:first-child { margin-left: 0; }
+  .chip { font-family: var(--sans); padding: 8px 15px; border-radius: 999px; border: 1px solid var(--line); background: var(--surface); color: var(--muted); font-size: 13.5px; font-weight: 600; cursor: pointer; transition: all .18s var(--ease); }
+  .chip:hover { border-color: var(--green); color: var(--green); }
+  .chip.active { background: var(--green); color: #fff; border-color: var(--green); }
+  .searchmini { display: flex; align-items: center; gap: 9px; padding: 9px 15px; border: 1px solid var(--line); border-radius: 999px; background: var(--surface); min-width: 230px; }
+  .searchmini svg { color: var(--muted); flex: none; }
+  .searchmini input { border: none; background: transparent; font-family: var(--sans); font-size: 14px; color: var(--text); flex: 1; }
+  .searchmini input:focus { outline: none; }
+  .count { font-family: var(--sans); font-size: 14px; color: var(--muted); }
+  .count b { color: var(--green); }
+
+  .month-label { grid-column: 1 / -1; display: flex; align-items: center; gap: 14px; margin: 12px 0 2px; }
+  .month-label:first-child { margin-top: 0; }
+  .month-label h3 { font-family: var(--sans); font-size: 13px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink); font-weight: 750; }
+  .month-label .rule { flex: 1; height: 1px; background: var(--line); }
+  .month-label .mc { font-family: var(--sans); font-size: 12.5px; color: var(--muted); }
+
+  .events-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 22px; }
+  @media (max-width: 940px) { .events-grid { grid-template-columns: repeat(2,1fr); } }
+  @media (max-width: 620px) { .events-grid { grid-template-columns: 1fr; } }
+  .ev { background: var(--surface); border: 1px solid var(--line); border-radius: var(--r); overflow: hidden; display: flex; flex-direction: column;
+    box-shadow: var(--sh-sm); transition: transform .25s var(--ease), box-shadow .3s var(--ease), border-color .25s; }
+  .ev:hover { transform: translateY(-6px); box-shadow: var(--sh); border-color: color-mix(in srgb, var(--green) 26%, var(--line)); }
+  .ev .top { height: 8px; }
+  .ev .pad { padding: 20px 20px 22px; flex: 1; display: flex; flex-direction: column; }
+  .ev .row1 { display: flex; align-items: flex-start; gap: 14px; margin-bottom: 14px; }
+  .ev .dblock { flex: none; text-align: center; width: 50px; }
+  .ev .dblock .d { font-family: var(--serif); font-size: 26px; font-weight: 600; color: var(--ink); line-height: 1; }
+  .ev .dblock .m { font-family: var(--sans); font-size: 10.5px; letter-spacing: 0.09em; text-transform: uppercase; color: var(--green); font-weight: 750; margin-top: 3px; }
+  .ev .fmt { font-family: var(--sans); font-size: 10.5px; font-weight: 750; letter-spacing: 0.04em; text-transform: uppercase; padding: 5px 10px; border-radius: 999px; color: #fff; margin-left: auto; }
+  .ev .cat { font-family: var(--sans); font-size: 11px; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; color: var(--gold); margin-bottom: 7px; }
+  .ev h3 { font-size: 18.5px; letter-spacing: -0.015em; line-height: 1.22; margin-bottom: 12px; }
+  .ev .loc { font-family: var(--sans); display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--muted); margin-bottom: 8px; }
+  .ev .loc svg { flex: none; color: var(--muted); }
+  .ev .rflag { font-family: var(--sans); font-size: 10px; font-weight: 800; padding: 2px 6px; border-radius: 5px; color: #fff; letter-spacing: 0.03em; }
+  .ev .scar { font-family: var(--sans); font-size: 11.5px; font-weight: 640; color: var(--coral); margin-bottom: 12px; display: inline-flex; align-items: center; gap: 6px; }
+  .ev .scar::before { content:""; width: 6px; height: 6px; border-radius: 50%; background: var(--coral); }
+  .ev .foot { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-top: auto; padding-top: 15px; border-top: 1px solid var(--line-soft); }
+  .ev .price { font-family: var(--sans); font-size: 12.5px; color: var(--muted); }
+  .ev .price b { font-family: var(--serif); color: var(--ink); font-size: 17px; font-weight: 600; }
+  .empty { grid-column: 1/-1; text-align: center; padding: 64px 20px; }
+  .empty svg { color: var(--muted); opacity: 0.45; margin-bottom: 16px; }
+  .empty h3 { font-family: var(--sans); font-size: 19px; margin-bottom: 8px; }
+  .empty p { font-family: var(--sans); color: var(--muted); margin: 0 0 20px; }
+
+  /* TOPIC TILES */
+  .topics { display: grid; grid-template-columns: repeat(3,1fr); gap: 18px; }
+  .topic { text-align: left; background: var(--surface); border: 1px solid var(--line); border-radius: var(--r); padding: 24px; cursor: pointer; display: flex; align-items: center; gap: 16px;
+    transition: transform .22s var(--ease), box-shadow .25s var(--ease), border-color .22s; font-family: var(--sans); }
+  .topic:hover { transform: translateY(-4px); box-shadow: var(--sh); border-color: color-mix(in srgb, var(--green) 30%, var(--line)); }
+  .topic .tic { width: 48px; height: 48px; border-radius: 12px; display: grid; place-items: center; flex: none; }
+  .topic h4 { font-family: var(--sans); font-size: 16.5px; font-weight: 700; letter-spacing: -0.01em; }
+  .topic .tc { font-size: 13px; color: var(--muted); margin-top: 2px; }
+  .topic .arr { margin-left: auto; color: var(--muted); transition: transform .2s, color .2s; }
+  .topic:hover .arr { transform: translateX(3px); color: var(--green); }
+  @media (max-width: 860px) { .topics { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 560px) { .topics { grid-template-columns: 1fr; } }
+
+  /* STATS + LOGOS */
+  .stat-band { display: grid; grid-template-columns: repeat(4,1fr); gap: 0; background: var(--surface); border: 1px solid var(--line); border-radius: 20px; overflow: hidden; box-shadow: var(--sh); }
+  .stat-band .sb { text-align: center; padding: 40px 20px; border-right: 1px solid var(--line-soft); }
+  .stat-band .sb:last-child { border-right: none; }
+  .stat-band .n { font-family: var(--serif); font-size: clamp(34px,5vw,48px); font-weight: 600; letter-spacing: -0.02em; color: var(--ink); }
+  .stat-band .n span { color: var(--green); }
+  .stat-band .l { font-family: var(--sans); color: var(--muted); font-size: 13.5px; margin-top: 6px; }
+  @media (max-width: 720px) { .stat-band { grid-template-columns: 1fr 1fr; } .stat-band .sb:nth-child(2){border-right:none;} .stat-band .sb:nth-child(1),.stat-band .sb:nth-child(2){border-bottom:1px solid var(--line-soft);} }
+  .logos { margin-top: 42px; text-align: center; }
+  .logos .ll { font-family: var(--sans); font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-bottom: 20px; }
+  .logos .lrow { display: flex; gap: 40px; justify-content: center; flex-wrap: wrap; align-items: center; }
+  .logos .lrow span { font-family: var(--serif); font-weight: 600; font-size: 21px; color: var(--muted); opacity: 0.62; letter-spacing: -0.01em; }
+
+  /* SPEAKERS */
+  .spk-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 22px; }
+  .spk { text-align: center; }
+  .spk .ph { aspect-ratio: 1; border-radius: 18px; position: relative; overflow: hidden; margin-bottom: 16px; box-shadow: var(--sh-sm); }
+  .spk .ph .ini { position: absolute; inset: 0; display: grid; place-items: center; font-family: var(--serif); font-size: 42px; font-weight: 600; color: rgba(255,255,255,0.94); }
+  .spk h4 { font-size: 18px; letter-spacing: -0.01em; }
+  .spk .role { font-family: var(--sans); color: var(--green); font-size: 13px; font-weight: 600; margin-top: 4px; }
+  .spk .org { font-family: var(--sans); color: var(--muted); font-size: 13px; }
+  @media (max-width: 860px) { .spk-grid { grid-template-columns: 1fr 1fr; } }
+
+  /* TESTIMONIAL */
+  .quote-wrap { max-width: 900px; margin: 0 auto; text-align: center; }
+  .quote-wrap .stars { color: var(--gold); font-size: 17px; letter-spacing: 3px; margin-bottom: 22px; }
+  .quote-wrap blockquote { font-family: var(--serif); font-size: clamp(22px, 3.2vw, 32px); line-height: 1.34; font-weight: 500; margin: 0 0 26px; letter-spacing: -0.015em; color: var(--ink); }
+  .quote-wrap blockquote b { color: var(--green); font-weight: 600; font-style: italic; }
+  .qauthor { display: flex; align-items: center; justify-content: center; gap: 13px; }
+  .qauthor .av { width: 50px; height: 50px; border-radius: 50%; flex: none; display: grid; place-items: center; font-family: var(--sans); font-weight: 750; color: #fff; }
+  .qauthor .n { font-family: var(--sans); font-weight: 700; font-size: 15px; color: var(--ink); }
+  .qauthor .r { font-family: var(--sans); color: var(--muted); font-size: 13px; }
+
+  /* PAST EVENTS */
+  .past-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 22px; }
+  @media (max-width: 900px) { .past-grid { grid-template-columns: 1fr; } }
+  .pcard { background: var(--surface); border: 1px solid var(--line); border-radius: var(--r); overflow: hidden; box-shadow: var(--sh-sm); display: flex; flex-direction: column; transition: transform .25s var(--ease), box-shadow .3s var(--ease), border-color .25s; }
+  .pcard:hover { transform: translateY(-6px); box-shadow: var(--sh); border-color: color-mix(in srgb, var(--green) 22%, var(--line)); }
+  .pcard .pbanner { height: 148px; position: relative; padding: 14px; display: flex; align-items: flex-end; }
+  .pcard .pbanner .pk { font-family: var(--sans); font-size: 11px; font-weight: 750; letter-spacing: 0.05em; text-transform: uppercase; color: #fff; background: rgba(0,0,0,0.30); padding: 5px 11px; border-radius: 999px; -webkit-backdrop-filter: blur(3px); backdrop-filter: blur(3px); }
+  .pcard .pbody { padding: 20px; flex: 1; display: flex; flex-direction: column; }
+  .pcard h3 { font-size: 18px; line-height: 1.24; letter-spacing: -0.015em; margin-bottom: 6px; }
+  .pcard .pmeta { font-family: var(--sans); font-size: 13px; color: var(--muted); margin-bottom: 14px; }
+  .pcard .pstats { display: flex; gap: 18px; margin-top: auto; padding-top: 15px; border-top: 1px solid var(--line-soft); }
+  .pcard .pstats .v { font-family: var(--serif); font-weight: 600; font-size: 19px; color: var(--ink); line-height: 1; }
+  .pcard .pstats .k { font-family: var(--sans); font-size: 11px; color: var(--muted); margin-top: 3px; }
+
+  /* CTA */
+  .cta-box { position: relative; overflow: hidden; border-radius: 26px; padding: 62px 48px; text-align: center; background: linear-gradient(135deg, #1D4ED8, #1E3A8A); box-shadow: var(--sh-lg); }
+  .cta-box::before { content:""; position:absolute; top:-40%; right:-8%; width:360px; height:360px; border-radius:50%; background: radial-gradient(circle, rgba(14,165,160,0.28), transparent 68%); }
+  .cta-box h2 { color: #FBFDF9; font-size: clamp(28px,4.2vw,44px); position: relative; letter-spacing: -0.025em; }
+  .cta-box p { font-family: var(--sans); color: rgba(255,255,255,0.85); font-size: 18px; margin: 16px auto 30px; max-width: 52ch; position: relative; }
+  .cta-actions { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; position: relative; }
+  .cta-box .btn-light { background: #FBFDF9; color: var(--green-ink); }
+  .cta-box .btn-light:hover { transform: translateY(-2px); box-shadow: 0 16px 30px -10px rgba(0,0,0,0.3); }
+  .cta-box .btn-outline { background: transparent; color: #fff; border-color: rgba(255,255,255,0.5); }
+  .cta-box .btn-outline:hover { background: rgba(255,255,255,0.12); transform: translateY(-2px); }
+
+  /* FOOTER */
+  footer { background: var(--surface); border-top: 1px solid var(--line); padding: 60px 0 34px; }
+  .foot-grid { display: grid; grid-template-columns: 1.8fr 1fr 1fr 1.1fr; gap: 34px; margin-bottom: 44px; }
+  footer .brand { margin-bottom: 16px; }
+  footer .about-txt { font-family: var(--sans); color: var(--muted); font-size: 14px; max-width: 32ch; }
+  footer h5 { font-family: var(--sans); font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); margin: 0 0 18px; }
+  footer ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 11px; }
+  footer ul a { font-family: var(--sans); color: var(--text); opacity: 0.85; font-size: 14px; }
+  footer ul a:hover { color: var(--green); opacity: 1; }
+  .foot-news { display: flex; gap: 8px; margin-top: 4px; }
+  .foot-news input { flex: 1; padding: 11px 14px; border: 1px solid var(--line); border-radius: 10px; background: var(--bg); font-family: var(--sans); font-size: 14px; color: var(--text); }
+  .foot-news input:focus { outline: none; border-color: var(--green); }
+  .foot-bottom { border-top: 1px solid var(--line); padding-top: 24px; display: flex; justify-content: space-between; gap: 14px; flex-wrap: wrap; font-family: var(--sans); color: var(--muted); font-size: 13px; }
+  @media (max-width: 820px) { .foot-grid { grid-template-columns: 1fr 1fr; } }
+  :focus-visible { outline: 2px solid var(--green); outline-offset: 3px; border-radius: 6px; }
+</style>
+
+<header class="nav" id="nav">
+  <div class="wrap nav-inner">
+    <a class="brand" href="#top" aria-label="MedConnect Events home">
+      <span class="mark" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M4 13h3l2-6 3 12 2.5-8 1.5 4H20" stroke="#FBFDF9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      MedConnect <b>Events</b>
+    </a>
+    <nav class="nav-links" aria-label="Primary">
+      <a href="#events">Upcoming Events</a>
+      <a href="#past">Past Events</a>
+      <a href="#topics">Therapeutic Areas</a>
+      <a href="#organisers">For Organisers</a>
+    </nav>
+    <div class="nav-right">
+      <button class="theme-btn" id="themeToggle" aria-label="Toggle light or dark theme">◐</button>
+      <a class="btn btn-ghost btn-sm" href="#organisers">List an Event</a>
+      <a class="btn btn-primary btn-sm" href="#events">Browse Events</a>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <div class="pill"><span class="live" aria-hidden="true"></span> 28 events scheduled · next 6 months · UK &amp; US</div>
+        <h1>Where pharma &amp; medicine <span class="u">meet</span> — in person and online.</h1>
+        <p class="lede">Discover, compare and register for the healthcare conferences that matter — or let us organise yours, end to end, across the UK and United States.</p>
+
+        <div class="searchbar" role="search">
+          <div class="field">
+            <label for="s-topic">Therapeutic area</label>
+            <select id="s-topic">
+              <option value="all">All areas</option>
+              <option value="Oncology">Oncology</option>
+              <option value="Clinical Trials">Clinical Trials</option>
+              <option value="Regulatory">Regulatory Affairs</option>
+              <option value="Digital Health">Digital Health</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="s-format">Format</label>
+            <select id="s-format">
+              <option value="all">Any format</option>
+              <option value="In-Person">In-Person</option>
+              <option value="Virtual">Virtual</option>
+              <option value="Hybrid">Hybrid</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="s-region">Region</label>
+            <select id="s-region">
+              <option value="all">UK &amp; US</option>
+              <option value="UK">United Kingdom</option>
+              <option value="US">United States</option>
+            </select>
+          </div>
+          <button class="btn btn-primary find" id="findBtn" type="button">Find events</button>
+        </div>
+
+        <div class="quick-chips">
+          <span class="ql">Popular:</span>
+          <button class="qchip" data-q-topic="Oncology">Oncology</button>
+          <button class="qchip" data-q-format="Virtual">Virtual only</button>
+          <button class="qchip" data-q-region="UK">UK events</button>
+          <button class="qchip" data-q-topic="Clinical Trials">Clinical Trials</button>
+        </div>
+      </div>
+
+      <aside class="feat" aria-label="Featured event">
+        <div class="cover" style="background:linear-gradient(135deg,#1E3A8A,#3B82F6);">
+          <div class="datechip"><div class="d">10</div><div class="m">Sep</div></div>
+          <span class="fbadge">Featured</span>
+        </div>
+        <div class="fbody">
+          <div class="ftag">Clinical Trials · Flagship</div>
+          <h3>Global Clinical Trials Congress 2026</h3>
+          <div class="fmeta">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M12 21s-7-5-7-11a7 7 0 0114 0c0 6-7 11-7 11z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><circle cx="12" cy="10" r="2.4" stroke="currentColor" stroke-width="2"/></svg>
+            New York, USA · 10–12 Sep · In-Person &amp; Hybrid
+          </div>
+          <div class="scarcity"><svg width="13" height="13" viewBox="0 0 24 24" fill="none"><path d="M13 2L3 14h7l-1 8 10-12h-7l1-8z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg> Early-bird ends 15 Aug · Near capacity</div>
+          <div class="frow">
+            <div class="fprice">from <b>$890</b></div>
+            <a class="btn btn-coral btn-sm" href="#events">Register Now →</a>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <!-- FORMAT STRIP -->
+  <div class="fstrip">
+    <div class="wrap fstrip-grid">
+      <div class="fs">
+        <span class="ic" style="background:var(--green-soft);color:var(--green);"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M12 21s-7-5-7-11a7 7 0 0114 0c0 6-7 11-7 11z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><circle cx="12" cy="10" r="2.4" stroke="currentColor" stroke-width="2"/></svg></span>
+        <div><h4>In-Person · UK &amp; US</h4><p>Flagship congresses in London, Boston, New York &amp; more.</p></div>
+      </div>
+      <div class="fs">
+        <span class="ic" style="background:rgba(76,92,199,0.12);color:var(--fmt-virtual);"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><rect x="2" y="4" width="20" height="14" rx="2" stroke="currentColor" stroke-width="2"/><path d="M8 21h8M12 18v3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>
+        <div><h4>Virtual · Global</h4><p>Live-streamed sessions with 90-day on-demand replays.</p></div>
+      </div>
+      <div class="fs">
+        <span class="ic" style="background:var(--gold-soft);color:var(--gold);"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2"/><path d="M3 12h18M12 3c2.5 2.5 2.5 15 0 18M12 3c-2.5 2.5-2.5 15 0 18" stroke="currentColor" stroke-width="2"/></svg></span>
+        <div><h4>Hybrid</h4><p>Attend on-site or online — one registration, both worlds.</p></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- EVENTS -->
+  <section class="sec" id="events">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <p class="eyebrow">Upcoming events</p>
+        <h2>Every conference in the next six months</h2>
+        <p>Filter by format, region and therapeutic area. Prices and formats shown up front — no digging required.</p>
+      </div>
+
+      <div class="events-toolbar reveal">
+        <div class="filters" id="filters">
+          <span class="fglabel">Format</span>
+          <button class="chip active" data-format="all">All</button>
+          <button class="chip" data-format="In-Person">In-Person</button>
+          <button class="chip" data-format="Virtual">Virtual</button>
+          <button class="chip" data-format="Hybrid">Hybrid</button>
+          <span class="fglabel">Region</span>
+          <button class="chip active" data-region="all">All</button>
+          <button class="chip" data-region="UK">🇬🇧 UK</button>
+          <button class="chip" data-region="US">🇺🇸 US</button>
+        </div>
+        <div class="searchmini">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none"><circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="2"/><path d="M21 21l-4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          <input type="text" id="search" placeholder="Search events…" aria-label="Search events">
+        </div>
+      </div>
+      <div style="margin-bottom:20px;" class="count" id="count"></div>
+
+      <div class="events-grid" id="grid"></div>
+    </div>
+  </section>
+
+  <!-- TOPICS -->
+  <section class="sec alt" id="topics">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <p class="eyebrow">Browse by therapeutic area</p>
+        <h2>Find your field</h2>
+      </div>
+      <div class="topics reveal" id="topicTiles"></div>
+    </div>
+  </section>
+
+  <!-- ABOUT / STATS -->
+  <section class="sec" id="about">
+    <div class="wrap">
+      <div class="sec-head center reveal">
+        <p class="eyebrow center">Trusted across life sciences</p>
+        <h2>Fourteen years organising healthcare events</h2>
+      </div>
+      <div class="stat-band reveal">
+        <div class="sb"><div class="n">320<span>+</span></div><div class="l">Events delivered</div></div>
+        <div class="sb"><div class="n">12k<span>+</span></div><div class="l">Delegates / year</div></div>
+        <div class="sb"><div class="n">40<span>+</span></div><div class="l">Pharma &amp; medical clients</div></div>
+        <div class="sb"><div class="n">98<span>%</span></div><div class="l">Client re-book rate</div></div>
+      </div>
+      <div class="logos reveal">
+        <div class="ll">Partnered with teams at</div>
+        <div class="lrow"><span>NovaBio</span><span>Cortex Pharma</span><span>Halcyon CRO</span><span>Meridian Rx</span><span>Genalyx</span><span>Verdant Labs</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SPEAKERS -->
+  <section class="sec alt">
+    <div class="wrap">
+      <div class="sec-head center reveal">
+        <p class="eyebrow center">Featured faculty</p>
+        <h2>Learn from the people moving the field</h2>
+      </div>
+      <div class="spk-grid reveal" id="spkGrid"></div>
+    </div>
+  </section>
+
+  <!-- PAST EVENTS -->
+  <section class="sec" id="past">
+    <div class="wrap">
+      <div class="sec-head center reveal">
+        <p class="eyebrow center">Past events</p>
+        <h2>A track record measured in outcomes</h2>
+        <p>A selection of congresses and meetings we've designed and delivered for sponsors, CROs and research networks.</p>
+      </div>
+      <div class="past-grid reveal">
+        <article class="pcard">
+          <div class="pbanner" style="background:linear-gradient(135deg,#1E3A8A,#3B82F6);"><span class="pk">Oncology · Phase III</span></div>
+          <div class="pbody">
+            <h3>Global Immuno-Oncology Investigator Summit</h3>
+            <div class="pmeta">Barcelona · 3 days · 42 trial sites</div>
+            <div class="pstats">
+              <div><div class="v">640</div><div class="k">Investigators</div></div>
+              <div><div class="v">18</div><div class="k">Countries</div></div>
+              <div><div class="v">96%</div><div class="k">Site activation</div></div>
+            </div>
+          </div>
+        </article>
+        <article class="pcard">
+          <div class="pbanner" style="background:linear-gradient(135deg,#334D8A,#4C5CC7);"><span class="pk">Drug Discovery</span></div>
+          <div class="pbody">
+            <h3>NextGen Small-Molecule Discovery Congress</h3>
+            <div class="pmeta">Basel · Hybrid · 6 parallel tracks</div>
+            <div class="pstats">
+              <div><div class="v">1.2k</div><div class="k">Delegates</div></div>
+              <div><div class="v">84</div><div class="k">Speakers</div></div>
+              <div><div class="v">4.8/5</div><div class="k">Satisfaction</div></div>
+            </div>
+          </div>
+        </article>
+        <article class="pcard">
+          <div class="pbanner" style="background:linear-gradient(135deg,#7A3E6A,#B4568F);"><span class="pk">Rare Disease</span></div>
+          <div class="pbody">
+            <h3>Rare &amp; Orphan Drug KOL Roundtable Series</h3>
+            <div class="pmeta">Virtual · 4-part series · 12 therapy areas</div>
+            <div class="pstats">
+              <div><div class="v">310</div><div class="k">KOLs engaged</div></div>
+              <div><div class="v">27</div><div class="k">Advisory outputs</div></div>
+              <div><div class="v">100%</div><div class="k">Compliance</div></div>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIAL -->
+  <section class="sec alt">
+    <div class="wrap quote-wrap reveal">
+      <div class="stars" aria-label="5 out of 5">★★★★★</div>
+      <blockquote>"The best-organised scientific events we attend. Compliance is seamless, the faculty is <b>genuinely world-class</b>, and finding the right conference now takes minutes, not hours."</blockquote>
+      <div class="qauthor">
+        <div class="av" style="background:linear-gradient(135deg,#1D4ED8,#3B82F6)">EM</div>
+        <div style="text-align:left;"><div class="n">Dr. Elena Marsh</div><div class="r">VP Clinical Operations · Cortex Pharma</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ORGANISERS CTA -->
+  <section class="sec" id="organisers">
+    <div class="wrap">
+      <div class="cta-box reveal">
+        <h2>Have a conference or meeting to organise?</h2>
+        <p>We plan, book and run congresses, advisory boards and investigator meetings for pharma &amp; medical companies — virtual, in-person or hybrid, across the UK and US. Tell us your therapy area and dates; we'll return a plan and quote within 48 hours.</p>
+        <div class="cta-actions">
+          <a class="btn btn-light" href="#organisers">Request a Proposal →</a>
+          <a class="btn btn-outline" href="#events">Browse Upcoming Events</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <a class="brand" href="#top">
+          <span class="mark" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M4 13h3l2-6 3 12 2.5-8 1.5 4H20" stroke="#FBFDF9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          MedConnect <b>Events</b>
+        </a>
+        <p class="about-txt">Pharma &amp; medical conference specialists — booking and organising healthcare events across the UK and United States, virtual and in-person.</p>
+      </div>
+      <div><h5>Events</h5><ul><li><a href="#events">Upcoming</a></li><li><a href="#topics">Oncology</a></li><li><a href="#topics">Clinical Trials</a></li><li><a href="#events">Virtual</a></li></ul></div>
+      <div><h5>Company</h5><ul><li><a href="#organisers">For Organisers</a></li><li><a href="#about">About Us</a></li><li><a href="#organisers">Become a Sponsor</a></li><li><a href="#organisers">Contact</a></li></ul></div>
+      <div>
+        <h5>Get event alerts</h5>
+        <p class="about-txt" style="margin-bottom:12px;">New conferences, straight to your inbox.</p>
+        <form class="foot-news" onsubmit="event.preventDefault(); this.querySelector('input').value=''; this.querySelector('input').placeholder='Subscribed ✓';">
+          <input type="email" placeholder="you@company.com" aria-label="Email address" required>
+          <button class="btn btn-primary btn-sm" type="submit">Join</button>
+        </form>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 MedConnect Events. Demo concept for pitch purposes.</span>
+      <span>London · Boston · Privacy · Terms</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  var root = document.documentElement;
+  // Theme
+  document.getElementById('themeToggle').addEventListener('click', function () {
+    var cur = root.getAttribute('data-theme') || 'light';
+    root.setAttribute('data-theme', cur === 'dark' ? 'light' : 'dark');
+  });
+  // Nav shadow on scroll
+  var nav = document.getElementById('nav');
+  window.addEventListener('scroll', function () { nav.classList.toggle('scrolled', window.scrollY > 20); }, { passive: true });
+
+  // DATA
+  var FMT = { 'In-Person': 'var(--fmt-inperson)', 'Virtual': 'var(--fmt-virtual)', 'Hybrid': 'var(--fmt-hybrid)' };
+  var SPINE = { 'Oncology':'#B4568F', 'Clinical Trials':'#1D4ED8', 'Regulatory':'#4C5CC7', 'Digital Health':'#0EA5A0' };
+  var REGC = { 'UK':'var(--uk)', 'US':'var(--us)', 'Global':'#3B82F6' };
+  var MONTHS = ['Aug','Sep','Oct','Nov','Dec','Jan'];
+  var MONTH_FULL = { Aug:'August 2026', Sep:'September 2026', Oct:'October 2026', Nov:'November 2026', Dec:'December 2026', Jan:'January 2027' };
+
+  var EVENTS = [
+    { d:'05', m:'Aug', title:'European Immuno-Oncology Forum', cat:'Oncology', fmt:'In-Person', region:'UK', city:'London, UK', price:'£495', scar:'Early-bird ends 20 Jul' },
+    { d:'12', m:'Aug', title:'AI in Drug Discovery Webinar Series', cat:'Digital Health', fmt:'Virtual', region:'Global', city:'Online · Live', price:'Free', scar:'' },
+    { d:'19', m:'Aug', title:'Decentralized Clinical Trials Summit', cat:'Clinical Trials', fmt:'Hybrid', region:'US', city:'Boston, USA', price:'$690', scar:'Near capacity' },
+    { d:'27', m:'Aug', title:'Rare Disease Patient Forum', cat:'Clinical Trials', fmt:'In-Person', region:'UK', city:'Cambridge, UK', price:'£350', scar:'' },
+    { d:'10', m:'Sep', title:'Global Clinical Trials Congress', cat:'Clinical Trials', fmt:'In-Person', region:'US', city:'New York, USA', price:'$890', scar:'Early-bird ends 15 Aug' },
+    { d:'17', m:'Sep', title:'Pharma Regulatory Affairs Summit', cat:'Regulatory', fmt:'Hybrid', region:'UK', city:'Manchester, UK', price:'£575', scar:'' },
+    { d:'24', m:'Sep', title:'Digital Health & Wearables Expo', cat:'Digital Health', fmt:'In-Person', region:'US', city:'San Francisco, USA', price:'$540', scar:'' },
+    { d:'02', m:'Oct', title:'Oncology Investigator Meeting', cat:'Oncology', fmt:'Virtual', region:'Global', city:'Online · Live', price:'Invite', scar:'' },
+    { d:'09', m:'Oct', title:'Vaccines & Immunotherapy Congress', cat:'Clinical Trials', fmt:'In-Person', region:'UK', city:'London, UK', price:'£620', scar:'New' },
+    { d:'21', m:'Oct', title:'FDA & EMA Submission Masterclass', cat:'Regulatory', fmt:'Virtual', region:'Global', city:'Online · Live', price:'$290', scar:'' },
+    { d:'04', m:'Nov', title:'Precision Medicine Symposium', cat:'Oncology', fmt:'Hybrid', region:'US', city:'San Diego, USA', price:'$740', scar:'' },
+    { d:'18', m:'Nov', title:'Medical Affairs Leaders Forum', cat:'Regulatory', fmt:'In-Person', region:'UK', city:'Edinburgh, UK', price:'£465', scar:'' },
+    { d:'03', m:'Dec', title:'Real-World Evidence & Data Summit', cat:'Digital Health', fmt:'Hybrid', region:'US', city:'Chicago, USA', price:'$650', scar:'' },
+    { d:'11', m:'Dec', title:'Year-End Oncology Roundtable', cat:'Oncology', fmt:'Virtual', region:'Global', city:'Online · Live', price:'Invite', scar:'' },
+    { d:'15', m:'Jan', title:'Clinical Operations Kickoff 2027', cat:'Clinical Trials', fmt:'In-Person', region:'US', city:'Boston, USA', price:'$820', scar:'New' }
+  ];
+
+  var state = { search:'', format:'all', region:'all', cat:'all' };
+  var grid = document.getElementById('grid');
+  var countEl = document.getElementById('count');
+
+  function pin(){ return '<svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M12 21s-7-5-7-11a7 7 0 0114 0c0 6-7 11-7 11z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><circle cx="12" cy="10" r="2.4" stroke="currentColor" stroke-width="2"/></svg>'; }
+
+  function cardHtml(e){
+    var regLabel = e.region === 'Global' ? 'ONLINE' : e.region;
+    return '<article class="ev">' +
+      '<div class="top" style="background:' + (SPINE[e.cat]||'#1D4ED8') + '"></div>' +
+      '<div class="pad">' +
+        '<div class="row1">' +
+          '<div class="dblock"><div class="d">' + e.d + '</div><div class="m">' + e.m + '</div></div>' +
+          '<span class="fmt" style="background:' + FMT[e.fmt] + '">' + e.fmt + '</span>' +
+        '</div>' +
+        '<div class="cat">' + e.cat + '</div>' +
+        '<h3>' + e.title + '</h3>' +
+        '<div class="loc">' + pin() + '<span>' + e.city + '</span><span class="rflag" style="background:' + (REGC[e.region]) + '">' + regLabel + '</span></div>' +
+        (e.scar ? '<div class="scar">' + e.scar + '</div>' : '') +
+        '<div class="foot"><div class="price">from <b>' + e.price + '</b></div>' +
+          '<a class="btn btn-primary btn-sm" href="#organisers">Register</a></div>' +
+      '</div></article>';
+  }
+
+  function render(){
+    var q = state.search.toLowerCase();
+    var filtered = EVENTS.filter(function(e){
+      if (state.format !== 'all' && e.fmt !== state.format) return false;
+      if (state.region !== 'all' && e.region !== state.region) return false;
+      if (state.cat !== 'all' && e.cat !== state.cat) return false;
+      if (q){ var hay = (e.title+' '+e.cat+' '+e.city+' '+e.fmt).toLowerCase(); if (hay.indexOf(q) === -1) return false; }
+      return true;
+    });
+    countEl.innerHTML = 'Showing <b>' + filtered.length + '</b> of ' + EVENTS.length + ' events';
+    if (!filtered.length){
+      grid.innerHTML = '<div class="empty"><svg width="46" height="46" viewBox="0 0 24 24" fill="none"><circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="2"/><path d="M21 21l-4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>' +
+        '<h3>No events match your filters</h3><p>Try removing a filter to see more of the calendar.</p>' +
+        '<button class="btn btn-primary" id="clearAll" type="button">Clear all filters</button></div>';
+      document.getElementById('clearAll').addEventListener('click', reset);
+      return;
+    }
+    var html = '';
+    MONTHS.forEach(function(mo){
+      var group = filtered.filter(function(e){ return e.m === mo; });
+      if (!group.length) return;
+      html += '<div class="month-label"><h3>' + MONTH_FULL[mo] + '</h3><span class="rule"></span><span class="mc">' + group.length + ' event' + (group.length>1?'s':'') + '</span></div>';
+      html += group.map(cardHtml).join('');
+    });
+    grid.innerHTML = html;
+  }
+
+  function syncChips(){
+    document.querySelectorAll('#filters .chip').forEach(function(c){
+      if (c.dataset.format !== undefined) c.classList.toggle('active', c.dataset.format === state.format);
+      if (c.dataset.region !== undefined) c.classList.toggle('active', c.dataset.region === state.region);
+    });
+  }
+  function reset(){
+    state = { search:'', format:'all', region:'all', cat:'all' };
+    document.getElementById('search').value = '';
+    document.getElementById('s-topic').value = 'all';
+    document.getElementById('s-format').value = 'all';
+    document.getElementById('s-region').value = 'all';
+    syncChips(); render();
+  }
+
+  document.getElementById('filters').addEventListener('click', function(ev){
+    var chip = ev.target.closest('.chip'); if (!chip) return;
+    if (chip.dataset.format !== undefined) state.format = chip.dataset.format;
+    if (chip.dataset.region !== undefined) state.region = chip.dataset.region;
+    syncChips(); render();
+  });
+  document.getElementById('search').addEventListener('input', function(e){ state.search = e.target.value; render(); });
+
+  // Hero search
+  document.getElementById('findBtn').addEventListener('click', function(){
+    state.cat = document.getElementById('s-topic').value;
+    state.format = document.getElementById('s-format').value;
+    state.region = document.getElementById('s-region').value;
+    syncChips(); render();
+    document.getElementById('events').scrollIntoView({ behavior: 'smooth' });
+  });
+  document.querySelectorAll('.qchip').forEach(function(b){
+    b.addEventListener('click', function(){
+      if (b.dataset.qTopic){ state.cat = b.dataset.qTopic; document.getElementById('s-topic').value = b.dataset.qTopic; }
+      if (b.dataset.qFormat){ state.format = b.dataset.qFormat; document.getElementById('s-format').value = b.dataset.qFormat; }
+      if (b.dataset.qRegion){ state.region = b.dataset.qRegion; document.getElementById('s-region').value = b.dataset.qRegion; }
+      syncChips(); render();
+      document.getElementById('events').scrollIntoView({ behavior: 'smooth' });
+    });
+  });
+
+  // TOPIC TILES
+  (function(){
+    var topics = [
+      { name:'Oncology', ic:'M12 3l2.5 5 5.5.8-4 4 1 5.5L12 20l-5 2.3 1-5.5-4-4 5.5-.8L12 3z', color:'#B4568F' },
+      { name:'Clinical Trials', ic:'M9 11l3 3L22 4M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11', color:'#1D4ED8' },
+      { name:'Regulatory', ic:'M12 3l8 4v5c0 5-3.5 8-8 9-4.5-1-8-4-8-9V7l8-4z', color:'#4C5CC7' },
+      { name:'Digital Health', ic:'M22 12h-4l-3 8-4-16-3 8H2', color:'#0EA5A0' }
+    ];
+    var counts = {};
+    EVENTS.forEach(function(e){ counts[e.cat] = (counts[e.cat]||0)+1; });
+    var wrap = document.getElementById('topicTiles');
+    wrap.innerHTML = topics.map(function(t){
+      var n = counts[t.name] || 0;
+      return '<button class="topic" data-cat="' + t.name + '">' +
+        '<span class="tic" style="background:' + t.color + '1F;color:' + t.color + '">' +
+          '<svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="' + t.ic + '" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>' +
+        '<div><h4>' + t.name + '</h4><div class="tc">' + n + ' upcoming event' + (n!==1?'s':'') + '</div></div>' +
+        '<span class="arr" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>' +
+        '</button>';
+    }).join('');
+    wrap.addEventListener('click', function(ev){
+      var t = ev.target.closest('.topic'); if (!t) return;
+      state.cat = t.dataset.cat;
+      document.getElementById('s-topic').value = t.dataset.cat;
+      render();
+      document.getElementById('events').scrollIntoView({ behavior: 'smooth' });
+    });
+  })();
+
+  // SPEAKERS
+  (function(){
+    var spk = [
+      { n:'Dr. Elena Marsh', r:'Chief Scientific Officer', o:'Cortex Pharma', c:'linear-gradient(135deg,#1E3A8A,#3B82F6)' },
+      { n:'Prof. Raj Patel', r:'Discovery Lab Director', o:'Genalyx', c:'linear-gradient(135deg,#334D8A,#4C5CC7)' },
+      { n:'Anna Sanders', r:'VP Clinical Operations', o:'Halcyon CRO', c:'linear-gradient(135deg,#7A3E6A,#B4568F)' },
+      { n:'Dr. Brian Long', r:'Principal Scientist', o:'Aria Therapeutics', c:'linear-gradient(135deg,#0C7C78,#0EA5A0)' }
+    ];
+    function ini(n){ return n.replace(/^(Dr\.|Prof\.)\s*/,'').split(' ').map(function(p){return p[0];}).slice(0,2).join(''); }
+    document.getElementById('spkGrid').innerHTML = spk.map(function(s){
+      return '<div class="spk"><div class="ph" style="background:' + s.c + '"><div class="ini">' + ini(s.n) + '</div></div>' +
+        '<h4>' + s.n + '</h4><div class="role">' + s.r + '</div><div class="org">' + s.o + '</div></div>';
+    }).join('');
+  })();
+
+  render();
+
+  // Scroll reveal
+  (function(){
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('in'); });
+      return;
+    }
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){ if (en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target); } });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+  })();
+</script>
+</html>
