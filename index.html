@@ -6,25 +6,25 @@
 <title>MedConnect Events — Pharma & Medical Conferences, UK & US</title>
 <style>
   :root {
-    /* Deep Blue + White — classic pharma trust, premium light */
-    --bg: #F5F8FC;
-    --bg-alt: #E9F0FA;
+    /* Plum + White — vibrant, event-forward, premium light */
+    --bg: #FCFBFD;
+    --bg-alt: #F7F0F6;
     --surface: #FFFFFF;
-    --ink: #0B1B34;
-    --text: #2C3A4F;
-    --muted: #5C6B85;
-    --line: #E1E8F2;
-    --line-soft: #EEF3FA;
-    --green: #1D4ED8;
-    --green-ink: #1E40AF;
-    --green-soft: #E7EDFC;
-    --gold: #0EA5A0;
-    --gold-soft: #DCF2F0;
+    --ink: #211324;
+    --text: #3E2F3C;
+    --muted: #7A6B77;
+    --line: #ECE4EC;
+    --line-soft: #F5EEF4;
+    --green: #86286F;
+    --green-ink: #6B1F58;
+    --green-soft: #F6E7F1;
+    --gold: #B92D82;
+    --gold-soft: #FBE6F1;
     --coral: #C0562F;
     --coral-soft: #F7E7DE;
-    --fmt-inperson: #1D4ED8;
-    --fmt-virtual: #4C5CC7;
-    --fmt-hybrid: #0EA5A0;
+    --fmt-inperson: #86286F;
+    --fmt-virtual: #6D3AA8;
+    --fmt-hybrid: #C77D14;
     --uk: #2A5BD7;
     --us: #C0492E;
     --sh-sm: 0 1px 2px rgba(48,40,20,0.05);
@@ -37,10 +37,10 @@
     --ease: cubic-bezier(0.16, 1, 0.3, 1);
   }
   :root[data-theme="dark"] {
-    --bg: #0A0F1A; --bg-alt: #0F1626; --surface: #111A2B; --ink: #EAF1FB; --text: #D2DCEC;
-    --muted: #8A99B5; --line: rgba(255,255,255,0.10); --line-soft: rgba(255,255,255,0.06);
-    --green: #6C93F5; --green-ink: #93B0F8; --green-soft: rgba(108,147,245,0.16);
-    --gold: #2FD4C4; --gold-soft: rgba(47,212,196,0.14); --coral: #E0805C; --coral-soft: rgba(224,128,92,0.14);
+    --bg: #140A12; --bg-alt: #1C0F19; --surface: #23131F; --ink: #F6EAF1; --text: #E2D3DD;
+    --muted: #AB92A4; --line: rgba(255,255,255,0.10); --line-soft: rgba(255,255,255,0.06);
+    --green: #D67CC0; --green-ink: #E39AD1; --green-soft: rgba(214,124,192,0.16);
+    --gold: #E88FC8; --gold-soft: rgba(232,143,200,0.14); --coral: #E0805C; --coral-soft: rgba(224,128,92,0.14);
     --line: rgba(255,255,255,0.10);
     --sh-sm: 0 1px 2px rgba(0,0,0,0.4); --sh: 0 4px 14px rgba(0,0,0,0.4), 0 18px 42px -18px rgba(0,0,0,0.6);
     --sh-lg: 0 30px 70px -30px rgba(0,0,0,0.7);
@@ -57,8 +57,8 @@
   .eyebrow.center { justify-content: center; }
   .btn { display: inline-flex; align-items: center; justify-content: center; gap: 9px; padding: 13px 24px; border-radius: 11px; font-family: var(--sans);
     font-weight: 620; font-size: 15px; cursor: pointer; border: 1px solid transparent; transition: transform .2s var(--ease), box-shadow .25s var(--ease), background .2s, color .2s, border-color .2s; }
-  .btn-primary { background: var(--green); color: #FBFDF9; box-shadow: 0 10px 24px -10px rgba(29,78,216,0.5); }
-  .btn-primary:hover { transform: translateY(-2px); background: var(--green-ink); box-shadow: 0 16px 30px -10px rgba(29,78,216,0.55); }
+  .btn-primary { background: var(--green); color: #FBFDF9; box-shadow: 0 10px 24px -10px rgba(134,40,111,0.5); }
+  .btn-primary:hover { transform: translateY(-2px); background: var(--green-ink); box-shadow: 0 16px 30px -10px rgba(134,40,111,0.55); }
   .btn-coral { background: var(--coral); color: #fff; box-shadow: 0 10px 24px -10px rgba(192,86,47,0.45); }
   .btn-coral:hover { transform: translateY(-2px); box-shadow: 0 16px 30px -10px rgba(192,86,47,0.5); }
   .btn-ghost { background: var(--surface); color: var(--ink); border-color: var(--line); }
@@ -79,7 +79,7 @@
   header.nav.scrolled { border-bottom-color: var(--line); box-shadow: var(--sh-sm); }
   .nav-inner { display: flex; align-items: center; justify-content: space-between; height: 74px; }
   .brand { display: flex; align-items: center; gap: 11px; font-family: var(--serif); font-weight: 600; font-size: 21px; letter-spacing: -0.02em; color: var(--ink); }
-  .brand .mark { width: 36px; height: 36px; border-radius: 10px; background: linear-gradient(140deg, var(--green), #3B82F6); display: grid; place-items: center; flex: none; box-shadow: 0 6px 16px -6px rgba(29,78,216,0.5); }
+  .brand .mark { width: 36px; height: 36px; border-radius: 10px; background: linear-gradient(140deg, var(--green), #C0328F); display: grid; place-items: center; flex: none; box-shadow: 0 6px 16px -6px rgba(134,40,111,0.5); }
   .brand b { color: var(--gold); font-weight: 600; }
   .nav-links { display: flex; gap: 30px; }
   .nav-links a { font-family: var(--sans); font-size: 14.5px; color: var(--muted); font-weight: 550; transition: color .2s; }
@@ -93,9 +93,9 @@
   /* HERO */
   .hero { position: relative; overflow: hidden; padding: 72px 0 64px; }
   .hero::before { content:""; position: absolute; top: -240px; right: -180px; width: 620px; height: 620px; border-radius: 50%;
-    background: radial-gradient(circle, rgba(29,78,216,0.10), transparent 68%); pointer-events: none; }
+    background: radial-gradient(circle, rgba(134,40,111,0.10), transparent 68%); pointer-events: none; }
   .hero::after { content:""; position: absolute; bottom: -260px; left: -160px; width: 520px; height: 520px; border-radius: 50%;
-    background: radial-gradient(circle, rgba(14,165,160,0.09), transparent 68%); pointer-events: none; }
+    background: radial-gradient(circle, rgba(214,64,159,0.09), transparent 68%); pointer-events: none; }
   .hero-grid { position: relative; z-index: 2; display: grid; grid-template-columns: 1.08fr 0.92fr; gap: 52px; align-items: center; }
   .hero .pill { display: inline-flex; align-items: center; gap: 9px; padding: 7px 15px 7px 10px; border-radius: 999px; border: 1px solid var(--line); background: var(--surface); font-family: var(--sans); font-size: 13px; color: var(--muted); box-shadow: var(--sh-sm); margin-bottom: 26px; }
   .hero .pill .live { width: 7px; height: 7px; border-radius: 50%; background: var(--coral); box-shadow: 0 0 0 0 rgba(192,86,47,0.5); animation: pulse 2.4s infinite; }
@@ -264,8 +264,8 @@
   .pcard .pstats .k { font-family: var(--sans); font-size: 11px; color: var(--muted); margin-top: 3px; }
 
   /* CTA */
-  .cta-box { position: relative; overflow: hidden; border-radius: 26px; padding: 62px 48px; text-align: center; background: linear-gradient(135deg, #1D4ED8, #1E3A8A); box-shadow: var(--sh-lg); }
-  .cta-box::before { content:""; position:absolute; top:-40%; right:-8%; width:360px; height:360px; border-radius:50%; background: radial-gradient(circle, rgba(14,165,160,0.28), transparent 68%); }
+  .cta-box { position: relative; overflow: hidden; border-radius: 26px; padding: 62px 48px; text-align: center; background: linear-gradient(135deg, #86286F, #4E1A44); box-shadow: var(--sh-lg); }
+  .cta-box::before { content:""; position:absolute; top:-40%; right:-8%; width:360px; height:360px; border-radius:50%; background: radial-gradient(circle, rgba(214,64,159,0.28), transparent 68%); }
   .cta-box h2 { color: #FBFDF9; font-size: clamp(28px,4.2vw,44px); position: relative; letter-spacing: -0.025em; }
   .cta-box p { font-family: var(--sans); color: rgba(255,255,255,0.85); font-size: 18px; margin: 16px auto 30px; max-width: 52ch; position: relative; }
   .cta-actions { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; position: relative; }
@@ -361,7 +361,7 @@
       </div>
 
       <aside class="feat" aria-label="Featured event">
-        <div class="cover" style="background:linear-gradient(135deg,#1E3A8A,#3B82F6);">
+        <div class="cover" style="background:linear-gradient(135deg,#4E1A44,#C0328F);">
           <div class="datechip"><div class="d">10</div><div class="m">Sep</div></div>
           <span class="fbadge">Featured</span>
         </div>
@@ -390,7 +390,7 @@
         <div><h4>In-Person · UK &amp; US</h4><p>Flagship congresses in London, Boston, New York &amp; more.</p></div>
       </div>
       <div class="fs">
-        <span class="ic" style="background:rgba(76,92,199,0.12);color:var(--fmt-virtual);"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><rect x="2" y="4" width="20" height="14" rx="2" stroke="currentColor" stroke-width="2"/><path d="M8 21h8M12 18v3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>
+        <span class="ic" style="background:rgba(192,50,143,0.12);color:var(--fmt-virtual);"><svg width="22" height="22" viewBox="0 0 24 24" fill="none"><rect x="2" y="4" width="20" height="14" rx="2" stroke="currentColor" stroke-width="2"/><path d="M8 21h8M12 18v3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>
         <div><h4>Virtual · Global</h4><p>Live-streamed sessions with 90-day on-demand replays.</p></div>
       </div>
       <div class="fs">
@@ -484,7 +484,7 @@
       </div>
       <div class="past-grid reveal">
         <article class="pcard">
-          <div class="pbanner" style="background:linear-gradient(135deg,#1E3A8A,#3B82F6);"><span class="pk">Oncology · Phase III</span></div>
+          <div class="pbanner" style="background:linear-gradient(135deg,#4E1A44,#C0328F);"><span class="pk">Oncology · Phase III</span></div>
           <div class="pbody">
             <h3>Global Immuno-Oncology Investigator Summit</h3>
             <div class="pmeta">Barcelona · 3 days · 42 trial sites</div>
@@ -496,7 +496,7 @@
           </div>
         </article>
         <article class="pcard">
-          <div class="pbanner" style="background:linear-gradient(135deg,#334D8A,#4C5CC7);"><span class="pk">Drug Discovery</span></div>
+          <div class="pbanner" style="background:linear-gradient(135deg,#4A2170,#6D3AA8);"><span class="pk">Drug Discovery</span></div>
           <div class="pbody">
             <h3>NextGen Small-Molecule Discovery Congress</h3>
             <div class="pmeta">Basel · Hybrid · 6 parallel tracks</div>
@@ -529,7 +529,7 @@
       <div class="stars" aria-label="5 out of 5">★★★★★</div>
       <blockquote>"The best-organised scientific events we attend. Compliance is seamless, the faculty is <b>genuinely world-class</b>, and finding the right conference now takes minutes, not hours."</blockquote>
       <div class="qauthor">
-        <div class="av" style="background:linear-gradient(135deg,#1D4ED8,#3B82F6)">EM</div>
+        <div class="av" style="background:linear-gradient(135deg,#86286F,#C0328F)">EM</div>
         <div style="text-align:left;"><div class="n">Dr. Elena Marsh</div><div class="r">VP Clinical Operations · Cortex Pharma</div></div>
       </div>
     </div>
@@ -591,8 +591,8 @@
 
   // DATA
   var FMT = { 'In-Person': 'var(--fmt-inperson)', 'Virtual': 'var(--fmt-virtual)', 'Hybrid': 'var(--fmt-hybrid)' };
-  var SPINE = { 'Oncology':'#B4568F', 'Clinical Trials':'#1D4ED8', 'Regulatory':'#4C5CC7', 'Digital Health':'#0EA5A0' };
-  var REGC = { 'UK':'var(--uk)', 'US':'var(--us)', 'Global':'#3B82F6' };
+  var SPINE = { 'Oncology':'#B4568F', 'Clinical Trials':'#86286F', 'Regulatory':'#6D3AA8', 'Digital Health':'#C77D14' };
+  var REGC = { 'UK':'var(--uk)', 'US':'var(--us)', 'Global':'#C0328F' };
   var MONTHS = ['Aug','Sep','Oct','Nov','Dec','Jan'];
   var MONTH_FULL = { Aug:'August 2026', Sep:'September 2026', Oct:'October 2026', Nov:'November 2026', Dec:'December 2026', Jan:'January 2027' };
 
@@ -623,7 +623,7 @@
   function cardHtml(e){
     var regLabel = e.region === 'Global' ? 'ONLINE' : e.region;
     return '<article class="ev">' +
-      '<div class="top" style="background:' + (SPINE[e.cat]||'#1D4ED8') + '"></div>' +
+      '<div class="top" style="background:' + (SPINE[e.cat]||'#86286F') + '"></div>' +
       '<div class="pad">' +
         '<div class="row1">' +
           '<div class="dblock"><div class="d">' + e.d + '</div><div class="m">' + e.m + '</div></div>' +
@@ -710,9 +710,9 @@
   (function(){
     var topics = [
       { name:'Oncology', ic:'M12 3l2.5 5 5.5.8-4 4 1 5.5L12 20l-5 2.3 1-5.5-4-4 5.5-.8L12 3z', color:'#B4568F' },
-      { name:'Clinical Trials', ic:'M9 11l3 3L22 4M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11', color:'#1D4ED8' },
-      { name:'Regulatory', ic:'M12 3l8 4v5c0 5-3.5 8-8 9-4.5-1-8-4-8-9V7l8-4z', color:'#4C5CC7' },
-      { name:'Digital Health', ic:'M22 12h-4l-3 8-4-16-3 8H2', color:'#0EA5A0' }
+      { name:'Clinical Trials', ic:'M9 11l3 3L22 4M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11', color:'#86286F' },
+      { name:'Regulatory', ic:'M12 3l8 4v5c0 5-3.5 8-8 9-4.5-1-8-4-8-9V7l8-4z', color:'#6D3AA8' },
+      { name:'Digital Health', ic:'M22 12h-4l-3 8-4-16-3 8H2', color:'#C77D14' }
     ];
     var counts = {};
     EVENTS.forEach(function(e){ counts[e.cat] = (counts[e.cat]||0)+1; });
@@ -738,10 +738,10 @@
   // SPEAKERS
   (function(){
     var spk = [
-      { n:'Dr. Elena Marsh', r:'Chief Scientific Officer', o:'Cortex Pharma', c:'linear-gradient(135deg,#1E3A8A,#3B82F6)' },
-      { n:'Prof. Raj Patel', r:'Discovery Lab Director', o:'Genalyx', c:'linear-gradient(135deg,#334D8A,#4C5CC7)' },
+      { n:'Dr. Elena Marsh', r:'Chief Scientific Officer', o:'Cortex Pharma', c:'linear-gradient(135deg,#4E1A44,#C0328F)' },
+      { n:'Prof. Raj Patel', r:'Discovery Lab Director', o:'Genalyx', c:'linear-gradient(135deg,#4A2170,#6D3AA8)' },
       { n:'Anna Sanders', r:'VP Clinical Operations', o:'Halcyon CRO', c:'linear-gradient(135deg,#7A3E6A,#B4568F)' },
-      { n:'Dr. Brian Long', r:'Principal Scientist', o:'Aria Therapeutics', c:'linear-gradient(135deg,#0C7C78,#0EA5A0)' }
+      { n:'Dr. Brian Long', r:'Principal Scientist', o:'Aria Therapeutics', c:'linear-gradient(135deg,#5B2A7A,#B92D82)' }
     ];
     function ini(n){ return n.replace(/^(Dr\.|Prof\.)\s*/,'').split(' ').map(function(p){return p[0];}).slice(0,2).join(''); }
     document.getElementById('spkGrid').innerHTML = spk.map(function(s){
