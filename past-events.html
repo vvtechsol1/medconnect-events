@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Upcoming Events — Pharma & Medical Conferences, UK & US | Catalyst Corp</title>
-<meta name="description" content="Browse and filter every upcoming clinical-trials, oncology, drug-discovery, regulatory and digital-health conference by format, region and therapeutic area.">
+<title>Past Events & Case Studies — Catalyst Corp</title>
+<meta name="description" content="A track record measured in outcomes: congresses, investigator meetings and advisory boards Catalyst Corp has designed and delivered for sponsors, CROs and research networks.">
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 <link rel="apple-touch-icon" href="favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -13,25 +13,14 @@
 <link rel="stylesheet" href="assets/css/style.css">
 <script>(function(){try{var t=localStorage.getItem('cc-theme');if(!t)t=matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.setAttribute('data-theme',t);}catch(e){}})();</script>
 <style>
-  .search-hero { padding: 56px 0 40px; }
-  .searchbar { margin-top: 8px; background: var(--surface); border: 1px solid var(--line); border-radius: 16px; box-shadow: var(--sh); padding: 12px; display: flex; gap: 8px; align-items: stretch; flex-wrap: wrap; max-width: 860px; }
-  .searchbar .field { flex: 1; min-width: 130px; display: flex; flex-direction: column; padding: 6px 12px; border-radius: 10px; gap: 0; }
-  .searchbar .field + .field { border-left: 1px solid var(--line-soft); }
-  .searchbar label { font-family: var(--sans); font-size: 10.5px; letter-spacing: 0.09em; text-transform: uppercase; color: var(--muted); font-weight: 700; margin-bottom: 3px; }
-  .searchbar select { border: none; background: transparent; font-family: var(--sans); font-size: 14.5px; font-weight: 600; color: var(--ink); cursor: pointer; padding: 0; }
-  .searchbar select:focus { outline: none; }
-  .searchbar .find { flex: 0 0 auto; }
+  .gallery { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+  .gallery .g { aspect-ratio: 1; border-radius: 14px; background-size: cover; background-position: center; box-shadow: var(--sh-sm); }
+  .gallery .g.wide { grid-column: span 2; aspect-ratio: 2/1; }
+  @media (max-width: 720px) { .gallery { grid-template-columns: 1fr 1fr; } .gallery .g.wide { grid-column: span 2; } }
 </style>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
-
-<div class="topbar">
-  <div class="wrap">
-    <span><strong>Early-bird ends 15 Aug</strong> · Save $300 on the Global Clinical Trials Congress 2026 &nbsp;<a href="event.html?id=global-clinical-trials-congress">Register →</a></span>
-    <button type="button" class="topbar-x" aria-label="Dismiss announcement">&times;</button>
-  </div>
-</div>
 
 <header class="nav" id="nav">
   <div class="wrap nav-inner">
@@ -77,8 +66,8 @@
     <a href="about.html">About</a>
     <a href="services.html">Services</a>
     <div class="sub">Events</div>
-    <a href="events.html" class="active">Upcoming Events</a>
-    <a href="past-events.html">Past Events & Case Studies</a>
+    <a href="events.html">Upcoming Events</a>
+    <a href="past-events.html" class="active">Past Events & Case Studies</a>
     <a href="speakers.html">Speakers</a>
     <div class="sub">More</div>
     <a href="sponsors.html">Sponsor & Exhibit</a>
@@ -87,79 +76,156 @@
   </nav>
   <div class="dcta">
     <a class="btn btn-primary btn-block" href="contact.html?intent=proposal">Request a Proposal</a>
-    <a class="btn btn-ghost btn-block" href="sponsors.html">Sponsor & Exhibit</a>
+    <a class="btn btn-ghost btn-block" href="events.html">Browse Events</a>
   </div>
 </aside>
 
 <main id="main">
-  <section class="page-hero search-hero">
+  <section class="page-hero">
     <div class="wrap inner">
-      <div class="breadcrumb"><a href="index.html">Home</a><span class="sep">/</span><span>Events</span></div>
-      <p class="eyebrow">Upcoming events</p>
-      <h1>Every conference in the next six months</h1>
-      <p>Filter by format, region and therapeutic area. Prices and formats shown up front — no digging required.</p>
-      <div class="searchbar" role="search">
-        <div class="field">
-          <label for="s-topic">Therapeutic area</label>
-          <select id="s-topic">
-            <option value="all">All areas</option>
-            <option value="Oncology">Oncology</option>
-            <option value="Clinical Trials">Clinical Trials</option>
-            <option value="Drug Discovery">Drug Discovery</option>
-            <option value="Regulatory">Regulatory Affairs</option>
-            <option value="Digital Health">Digital Health</option>
-          </select>
-        </div>
-        <button class="btn btn-primary find" type="button" onclick="document.getElementById('events-list').scrollIntoView({behavior:'smooth'});">Find events</button>
-      </div>
+      <div class="breadcrumb"><a href="index.html">Home</a><span class="sep">/</span><span>Past Events</span></div>
+      <p class="eyebrow">Past events &amp; case studies</p>
+      <h1>A track record measured in outcomes</h1>
+      <p>A selection of the congresses, investigator meetings and advisory boards we've designed and delivered for sponsors, CROs and research networks worldwide.</p>
     </div>
   </section>
 
-  <section class="sec" id="events-list" style="padding-top:56px;">
+  <!-- OUTCOME STATS -->
+  <section class="sec tight">
     <div class="wrap">
-      <div class="events-toolbar">
-        <div class="filters" id="filters">
-          <span class="fglabel">Format</span>
-          <button type="button" class="chip active" data-format="all">All</button>
-          <button type="button" class="chip" data-format="In-Person">In-Person</button>
-          <button type="button" class="chip" data-format="Virtual">Virtual</button>
-          <button type="button" class="chip" data-format="Hybrid">Hybrid</button>
-          <span class="fglabel">Region</span>
-          <button type="button" class="chip active" data-region="all">All</button>
-          <button type="button" class="chip" data-region="UK">🇬🇧 UK</button>
-          <button type="button" class="chip" data-region="US">🇺🇸 US</button>
-        </div>
-        <div class="searchmini">
-          <svg width="17" height="17" viewBox="0 0 24 24" fill="none"><circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="2"/><path d="M21 21l-4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-          <input type="text" id="search" placeholder="Search events…" aria-label="Search events">
-        </div>
+      <div class="stat-band reveal">
+        <div class="sb"><div class="n"><span data-count="320">0</span><span>+</span></div><div class="l">Events delivered</div></div>
+        <div class="sb"><div class="n"><span data-count="4.8" data-suffix="/5">0</span></div><div class="l">Avg. delegate rating</div></div>
+        <div class="sb"><div class="n"><span data-count="96">0</span><span>%</span></div><div class="l">Avg. site activation</div></div>
+        <div class="sb"><div class="n"><span data-count="100">0</span><span>%</span></div><div class="l">Compliance record</div></div>
       </div>
-      <div class="count" id="count"></div>
-      <div class="events-grid" id="grid"></div>
     </div>
   </section>
 
-  <!-- TOPIC TILES -->
+  <!-- CASE STUDIES -->
+  <section class="sec" style="padding-top:40px;">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <p class="eyebrow">Selected case studies</p>
+        <h2>Events we're proud of</h2>
+      </div>
+      <div class="past-grid reveal">
+        <article class="pcard">
+          <div class="pbanner" style="background:linear-gradient(135deg,#4E1A44,#C0328F);"><span class="pk">Oncology · Phase III</span></div>
+          <div class="pbody">
+            <h3>Global Immuno-Oncology Investigator Summit</h3>
+            <div class="pmeta">Barcelona · 3 days · 42 trial sites</div>
+            <div class="pstats">
+              <div><div class="v">640</div><div class="k">Investigators</div></div>
+              <div><div class="v">18</div><div class="k">Countries</div></div>
+              <div><div class="v">96%</div><div class="k">Site activation</div></div>
+            </div>
+          </div>
+        </article>
+        <article class="pcard">
+          <div class="pbanner" style="background:linear-gradient(135deg,#4A2170,#6D3AA8);"><span class="pk">Drug Discovery</span></div>
+          <div class="pbody">
+            <h3>NextGen Small-Molecule Discovery Congress</h3>
+            <div class="pmeta">Basel · Hybrid · 6 parallel tracks</div>
+            <div class="pstats">
+              <div><div class="v">1.2k</div><div class="k">Delegates</div></div>
+              <div><div class="v">84</div><div class="k">Speakers</div></div>
+              <div><div class="v">4.8/5</div><div class="k">Satisfaction</div></div>
+            </div>
+          </div>
+        </article>
+        <article class="pcard">
+          <div class="pbanner" style="background:linear-gradient(135deg,#7A3E6A,#B4568F);"><span class="pk">Rare Disease</span></div>
+          <div class="pbody">
+            <h3>Rare &amp; Orphan Drug KOL Roundtable Series</h3>
+            <div class="pmeta">Virtual · 4-part series · 12 therapy areas</div>
+            <div class="pstats">
+              <div><div class="v">310</div><div class="k">KOLs engaged</div></div>
+              <div><div class="v">27</div><div class="k">Advisory outputs</div></div>
+              <div><div class="v">100%</div><div class="k">Compliance</div></div>
+            </div>
+          </div>
+        </article>
+        <article class="pcard">
+          <div class="pbanner" style="background:linear-gradient(135deg,#5B2A7A,#B92D82);"><span class="pk">Regulatory</span></div>
+          <div class="pbody">
+            <h3>Transatlantic Regulatory Affairs Forum</h3>
+            <div class="pmeta">London &amp; Boston · Hybrid · 2 days</div>
+            <div class="pstats">
+              <div><div class="v">480</div><div class="k">Delegates</div></div>
+              <div><div class="v">32</div><div class="k">Sessions</div></div>
+              <div><div class="v">4.7/5</div><div class="k">Satisfaction</div></div>
+            </div>
+          </div>
+        </article>
+        <article class="pcard">
+          <div class="pbanner" style="background:linear-gradient(135deg,#4E1A44,#8A4CB0);"><span class="pk">Clinical Trials</span></div>
+          <div class="pbody">
+            <h3>Decentralized Trials Innovation Summit</h3>
+            <div class="pmeta">New York · In-Person · 900 delegates</div>
+            <div class="pstats">
+              <div><div class="v">900</div><div class="k">Delegates</div></div>
+              <div><div class="v">45</div><div class="k">Exhibitors</div></div>
+              <div><div class="v">92%</div><div class="k">Would return</div></div>
+            </div>
+          </div>
+        </article>
+        <article class="pcard">
+          <div class="pbanner" style="background:linear-gradient(135deg,#7A3E6A,#C0328F);"><span class="pk">Digital Health</span></div>
+          <div class="pbody">
+            <h3>Real-World Evidence &amp; Data Congress</h3>
+            <div class="pmeta">Chicago · Hybrid · 3 days</div>
+            <div class="pstats">
+              <div><div class="v">1.1k</div><div class="k">Delegates</div></div>
+              <div><div class="v">60</div><div class="k">Speakers</div></div>
+              <div><div class="v">4.9/5</div><div class="k">Satisfaction</div></div>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALLERY -->
   <section class="sec alt">
     <div class="wrap">
       <div class="sec-head reveal">
-        <p class="eyebrow">Browse by therapeutic area</p>
-        <h2>Find your field</h2>
+        <p class="eyebrow">In the room</p>
+        <h2>Moments from recent events</h2>
       </div>
-      <div class="topics reveal" id="topicTiles"></div>
+      <div class="gallery reveal">
+        <div class="g wide" style="background-image:url('https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=900&q=72');"></div>
+        <div class="g" style="background-image:url('https://images.unsplash.com/photo-1505373877841-8d25f7d46678?auto=format&fit=crop&w=500&q=72');"></div>
+        <div class="g" style="background-image:url('https://images.unsplash.com/photo-1587825140708-dfaf72ae4b04?auto=format&fit=crop&w=500&q=72');"></div>
+        <div class="g" style="background-image:url('https://images.unsplash.com/photo-1475721027785-f74eccf877e2?auto=format&fit=crop&w=500&q=72');"></div>
+        <div class="g" style="background-image:url('https://images.unsplash.com/photo-1515187029135-18ee286d815b?auto=format&fit=crop&w=500&q=72');"></div>
+        <div class="g wide" style="background-image:url('https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=900&q=72');"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIAL -->
+  <section class="sec">
+    <div class="wrap quote-wrap reveal">
+      <div class="stars" aria-label="5 out of 5">★★★★★</div>
+      <blockquote>"Catalyst delivered a 900-delegate summit that ran like clockwork. The <b>compliance and accreditation were flawless</b>, and our sponsors have already re-booked for next year."</blockquote>
+      <div class="qauthor">
+        <div class="av" style="background:linear-gradient(135deg,#4A2170,#6D3AA8)">AS</div>
+        <div style="text-align:left;"><div class="n">Anna Sanders</div><div class="r">VP Clinical Operations · Halcyon CRO</div></div>
+      </div>
     </div>
   </section>
 
   <!-- CTA -->
-  <section class="sec">
+  <section class="sec alt">
     <div class="wrap">
       <div class="cta-box reveal">
-        <p class="eyebrow">Can't find the right event?</p>
-        <h2>We'll build one for you</h2>
-        <p>From advisory boards to full congresses — tell us what you need and we'll return a plan and quote within 48 hours.</p>
+        <p class="eyebrow">Your event next</p>
+        <h2>Let's create your next success story</h2>
+        <p>Whatever your therapy area, we'll design an event your delegates and sponsors remember — and want to repeat.</p>
         <div class="cta-actions">
           <a class="btn btn-light btn-lg" href="contact.html?intent=proposal">Request a Proposal</a>
-          <a class="btn btn-outline-l btn-lg" href="services.html">Our Services</a>
+          <a class="btn btn-outline-l btn-lg" href="events.html">Browse Upcoming Events</a>
         </div>
       </div>
     </div>

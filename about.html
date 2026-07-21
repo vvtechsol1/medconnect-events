@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Upcoming Events — Pharma & Medical Conferences, UK & US | Catalyst Corp</title>
-<meta name="description" content="Browse and filter every upcoming clinical-trials, oncology, drug-discovery, regulatory and digital-health conference by format, region and therapeutic area.">
+<title>About Catalyst Corp — Life-Sciences Event Specialists</title>
+<meta name="description" content="Fourteen years designing and delivering compliant clinical-trials and drug-discovery conferences across the UK and United States. Meet the team behind Catalyst Corp.">
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 <link rel="apple-touch-icon" href="favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -12,26 +12,9 @@
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/css/style.css">
 <script>(function(){try{var t=localStorage.getItem('cc-theme');if(!t)t=matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.setAttribute('data-theme',t);}catch(e){}})();</script>
-<style>
-  .search-hero { padding: 56px 0 40px; }
-  .searchbar { margin-top: 8px; background: var(--surface); border: 1px solid var(--line); border-radius: 16px; box-shadow: var(--sh); padding: 12px; display: flex; gap: 8px; align-items: stretch; flex-wrap: wrap; max-width: 860px; }
-  .searchbar .field { flex: 1; min-width: 130px; display: flex; flex-direction: column; padding: 6px 12px; border-radius: 10px; gap: 0; }
-  .searchbar .field + .field { border-left: 1px solid var(--line-soft); }
-  .searchbar label { font-family: var(--sans); font-size: 10.5px; letter-spacing: 0.09em; text-transform: uppercase; color: var(--muted); font-weight: 700; margin-bottom: 3px; }
-  .searchbar select { border: none; background: transparent; font-family: var(--sans); font-size: 14.5px; font-weight: 600; color: var(--ink); cursor: pointer; padding: 0; }
-  .searchbar select:focus { outline: none; }
-  .searchbar .find { flex: 0 0 auto; }
-</style>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
-
-<div class="topbar">
-  <div class="wrap">
-    <span><strong>Early-bird ends 15 Aug</strong> · Save $300 on the Global Clinical Trials Congress 2026 &nbsp;<a href="event.html?id=global-clinical-trials-congress">Register →</a></span>
-    <button type="button" class="topbar-x" aria-label="Dismiss announcement">&times;</button>
-  </div>
-</div>
 
 <header class="nav" id="nav">
   <div class="wrap nav-inner">
@@ -41,7 +24,7 @@
     </a>
     <nav class="nav-links" aria-label="Primary">
       <a href="index.html">Home</a>
-      <a href="about.html">About</a>
+      <a href="about.html" class="active">About</a>
       <a href="services.html">Services</a>
       <div class="nav-item">
         <button type="button" aria-haspopup="true">Events <svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
@@ -74,10 +57,10 @@
   </div>
   <nav>
     <a href="index.html">Home</a>
-    <a href="about.html">About</a>
+    <a href="about.html" class="active">About</a>
     <a href="services.html">Services</a>
     <div class="sub">Events</div>
-    <a href="events.html" class="active">Upcoming Events</a>
+    <a href="events.html">Upcoming Events</a>
     <a href="past-events.html">Past Events & Case Studies</a>
     <a href="speakers.html">Speakers</a>
     <div class="sub">More</div>
@@ -87,66 +70,123 @@
   </nav>
   <div class="dcta">
     <a class="btn btn-primary btn-block" href="contact.html?intent=proposal">Request a Proposal</a>
-    <a class="btn btn-ghost btn-block" href="sponsors.html">Sponsor & Exhibit</a>
+    <a class="btn btn-ghost btn-block" href="events.html">Browse Events</a>
   </div>
 </aside>
 
 <main id="main">
-  <section class="page-hero search-hero">
+  <!-- PAGE HERO -->
+  <section class="page-hero">
     <div class="wrap inner">
-      <div class="breadcrumb"><a href="index.html">Home</a><span class="sep">/</span><span>Events</span></div>
-      <p class="eyebrow">Upcoming events</p>
-      <h1>Every conference in the next six months</h1>
-      <p>Filter by format, region and therapeutic area. Prices and formats shown up front — no digging required.</p>
-      <div class="searchbar" role="search">
-        <div class="field">
-          <label for="s-topic">Therapeutic area</label>
-          <select id="s-topic">
-            <option value="all">All areas</option>
-            <option value="Oncology">Oncology</option>
-            <option value="Clinical Trials">Clinical Trials</option>
-            <option value="Drug Discovery">Drug Discovery</option>
-            <option value="Regulatory">Regulatory Affairs</option>
-            <option value="Digital Health">Digital Health</option>
-          </select>
-        </div>
-        <button class="btn btn-primary find" type="button" onclick="document.getElementById('events-list').scrollIntoView({behavior:'smooth'});">Find events</button>
+      <div class="breadcrumb"><a href="index.html">Home</a><span class="sep">/</span><span>About</span></div>
+      <p class="eyebrow">About Catalyst Corp</p>
+      <h1>The event partner built for life sciences</h1>
+      <p>For fourteen years we've brought sponsors, CROs, investigators and biotech innovators into one room — from first molecule to Phase IV. Compliant by design, memorable by intent, across the UK and United States.</p>
+    </div>
+  </section>
+
+  <!-- MISSION SPLIT -->
+  <section class="sec">
+    <div class="wrap split reveal">
+      <div class="split-media" style="background-image:linear-gradient(rgba(38,12,33,0.14),rgba(38,12,33,0.14)),url('https://images.unsplash.com/photo-1505373877841-8d25f7d46678?auto=format&fit=crop&w=1000&q=72');"></div>
+      <div class="split-copy">
+        <p class="eyebrow">Our mission</p>
+        <h2>Connecting minds, advancing medicine</h2>
+        <p>Great science moves faster when the right people are in the room. We exist to create those rooms — scientifically rigorous, fully compliant, and genuinely worth attending — so that research reaches patients sooner.</p>
+        <p>We're specialists, not generalists. Every planner on our team understands the difference between a CME session and a promotional one, why transfer-of-value reporting matters, and how to keep an investigator meeting on-protocol.</p>
       </div>
     </div>
   </section>
 
-  <section class="sec" id="events-list" style="padding-top:56px;">
-    <div class="wrap">
-      <div class="events-toolbar">
-        <div class="filters" id="filters">
-          <span class="fglabel">Format</span>
-          <button type="button" class="chip active" data-format="all">All</button>
-          <button type="button" class="chip" data-format="In-Person">In-Person</button>
-          <button type="button" class="chip" data-format="Virtual">Virtual</button>
-          <button type="button" class="chip" data-format="Hybrid">Hybrid</button>
-          <span class="fglabel">Region</span>
-          <button type="button" class="chip active" data-region="all">All</button>
-          <button type="button" class="chip" data-region="UK">🇬🇧 UK</button>
-          <button type="button" class="chip" data-region="US">🇺🇸 US</button>
-        </div>
-        <div class="searchmini">
-          <svg width="17" height="17" viewBox="0 0 24 24" fill="none"><circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="2"/><path d="M21 21l-4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-          <input type="text" id="search" placeholder="Search events…" aria-label="Search events">
-        </div>
-      </div>
-      <div class="count" id="count"></div>
-      <div class="events-grid" id="grid"></div>
-    </div>
-  </section>
-
-  <!-- TOPIC TILES -->
+  <!-- STATS -->
   <section class="sec alt">
     <div class="wrap">
-      <div class="sec-head reveal">
-        <p class="eyebrow">Browse by therapeutic area</p>
-        <h2>Find your field</h2>
+      <div class="stat-band reveal">
+        <div class="sb"><div class="n"><span data-count="320">0</span><span>+</span></div><div class="l">Events delivered</div></div>
+        <div class="sb"><div class="n"><span data-count="12">0</span><span>k+</span></div><div class="l">Delegates / year</div></div>
+        <div class="sb"><div class="n"><span data-count="18">0</span><span></span></div><div class="l">Countries reached</div></div>
+        <div class="sb"><div class="n"><span data-count="98">0</span><span>%</span></div><div class="l">Client re-book rate</div></div>
       </div>
-      <div class="topics reveal" id="topicTiles"></div>
+    </div>
+  </section>
+
+  <!-- TIMELINE -->
+  <section class="sec">
+    <div class="wrap">
+      <div class="sec-head center reveal">
+        <p class="eyebrow center">Our story</p>
+        <h2>Fourteen years in the making</h2>
+      </div>
+      <div class="timeline reveal">
+        <div class="tl-item"><div class="yr">2012</div><h4>Founded in London</h4><p>Catalyst Corp opens its doors with a single focus: scientific events done properly, for pharma and medical clients.</p></div>
+        <div class="tl-item"><div class="yr">2015</div><h4>First flagship congress</h4><p>We deliver our first 1,000-delegate clinical-trials congress, setting the template for compliant large-scale events.</p></div>
+        <div class="tl-item"><div class="yr">2018</div><h4>Boston office opens</h4><p>A US base lets us run transatlantic programmes end-to-end, with local teams on both sides of the Atlantic.</p></div>
+        <div class="tl-item"><div class="yr">2020</div><h4>Catalyst Live launches</h4><p>Our branded virtual & hybrid platform keeps the science moving when the world couldn't travel — and stays for good.</p></div>
+        <div class="tl-item"><div class="yr">2026</div><h4>320+ events and counting</h4><p>Today we run 28+ events a year across oncology, clinical trials, drug discovery, regulatory and digital health.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VALUES -->
+  <section class="sec alt">
+    <div class="wrap">
+      <div class="sec-head center reveal">
+        <p class="eyebrow center">What we stand for</p>
+        <h2>Our values</h2>
+      </div>
+      <div class="values reveal">
+        <div class="fcard">
+          <span class="ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 3l8 4v5c0 5-3.5 8-8 9-4.5-1-8-4-8-9V7l8-4z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M9 12l2 2 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+          <h3>Compliance first</h3>
+          <p>Codes of practice, accreditation and data integrity are built in from day one — never bolted on at the end.</p>
+        </div>
+        <div class="fcard">
+          <span class="ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 2l2.4 7.4H22l-6 4.4 2.3 7.2-6.3-4.6L5.7 21 8 14 2 9.6h7.6z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg></span>
+          <h3>Scientific rigour</h3>
+          <p>Programmes shaped with scientific committees, not marketing calendars. The content earns the room.</p>
+        </div>
+        <div class="fcard">
+          <span class="ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="4" stroke="currentColor" stroke-width="2"/><path d="M4 21c0-4 3.6-7 8-7s8 3 8 7" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>
+          <h3>Delegate experience</h3>
+          <p>Every touchpoint — from registration to replays — designed to respect the time of busy clinicians and scientists.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TEAM -->
+  <section class="sec">
+    <div class="wrap">
+      <div class="sec-head center reveal">
+        <p class="eyebrow center">Leadership</p>
+        <h2>The team behind your events</h2>
+        <p>Event scientists, compliance specialists and production leads who've spent their careers in life sciences.</p>
+      </div>
+      <div class="spk-grid reveal">
+        <div class="spk"><div class="ph" style="background:linear-gradient(135deg,#4E1A44,#C0328F)"><div class="ini">HK</div></div><h4>Hannah Kaur</h4><div class="role">Founder & CEO</div><div class="org">London</div></div>
+        <div class="spk"><div class="ph" style="background:linear-gradient(135deg,#4A2170,#6D3AA8)"><div class="ini">MR</div></div><h4>Marcus Reed</h4><div class="role">Head of Programmes</div><div class="org">Boston</div></div>
+        <div class="spk"><div class="ph" style="background:linear-gradient(135deg,#7A3E6A,#B4568F)"><div class="ini">PN</div></div><h4>Priya Nair</h4><div class="role">Compliance Director</div><div class="org">London</div></div>
+        <div class="spk"><div class="ph" style="background:linear-gradient(135deg,#5B2A7A,#B92D82)"><div class="ini">TO</div></div><h4>Tom O'Brien</h4><div class="role">Head of Production</div><div class="org">Boston</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMPLIANCE / TRUST -->
+  <section class="sec alt">
+    <div class="wrap split rev reveal">
+      <div class="split-media" style="background-image:linear-gradient(rgba(38,12,33,0.14),rgba(38,12,33,0.14)),url('https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=1000&q=72');"></div>
+      <div class="split-copy">
+        <p class="eyebrow">Trust &amp; compliance</p>
+        <h2>Built for a regulated industry</h2>
+        <p>Pharma and medical events carry obligations that generic organisers overlook. We handle them as standard:</p>
+        <ul class="ticklist">
+          <li><span class="tk"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span> ABPI &amp; PhRMA code-aligned programme design</li>
+          <li><span class="tk"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span> CPD / CME accreditation management</li>
+          <li><span class="tk"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span> Transfer-of-value &amp; disclosure reporting</li>
+          <li><span class="tk"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span> GDPR &amp; HIPAA-conscious data handling</li>
+          <li><span class="tk"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span> Event code of conduct &amp; accessibility as standard</li>
+        </ul>
+      </div>
     </div>
   </section>
 
@@ -154,12 +194,12 @@
   <section class="sec">
     <div class="wrap">
       <div class="cta-box reveal">
-        <p class="eyebrow">Can't find the right event?</p>
-        <h2>We'll build one for you</h2>
-        <p>From advisory boards to full congresses — tell us what you need and we'll return a plan and quote within 48 hours.</p>
+        <p class="eyebrow">Work with us</p>
+        <h2>Let's plan your next event</h2>
+        <p>Tell us your therapy area and dates — we'll return a plan and quote within 48 hours.</p>
         <div class="cta-actions">
           <a class="btn btn-light btn-lg" href="contact.html?intent=proposal">Request a Proposal</a>
-          <a class="btn btn-outline-l btn-lg" href="services.html">Our Services</a>
+          <a class="btn btn-outline-l btn-lg" href="services.html">Explore Our Services</a>
         </div>
       </div>
     </div>

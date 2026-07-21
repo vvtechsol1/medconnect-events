@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Upcoming Events — Pharma & Medical Conferences, UK & US | Catalyst Corp</title>
-<meta name="description" content="Browse and filter every upcoming clinical-trials, oncology, drug-discovery, regulatory and digital-health conference by format, region and therapeutic area.">
+<title>Contact & Request a Proposal — Catalyst Corp</title>
+<meta name="description" content="Tell us about your event and we'll return a plan and quote within 48 hours. Contact Catalyst Corp in London and Boston for conferences, meetings and sponsorship.">
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 <link rel="apple-touch-icon" href="favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -13,25 +13,15 @@
 <link rel="stylesheet" href="assets/css/style.css">
 <script>(function(){try{var t=localStorage.getItem('cc-theme');if(!t)t=matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.setAttribute('data-theme',t);}catch(e){}})();</script>
 <style>
-  .search-hero { padding: 56px 0 40px; }
-  .searchbar { margin-top: 8px; background: var(--surface); border: 1px solid var(--line); border-radius: 16px; box-shadow: var(--sh); padding: 12px; display: flex; gap: 8px; align-items: stretch; flex-wrap: wrap; max-width: 860px; }
-  .searchbar .field { flex: 1; min-width: 130px; display: flex; flex-direction: column; padding: 6px 12px; border-radius: 10px; gap: 0; }
-  .searchbar .field + .field { border-left: 1px solid var(--line-soft); }
-  .searchbar label { font-family: var(--sans); font-size: 10.5px; letter-spacing: 0.09em; text-transform: uppercase; color: var(--muted); font-weight: 700; margin-bottom: 3px; }
-  .searchbar select { border: none; background: transparent; font-family: var(--sans); font-size: 14.5px; font-weight: 600; color: var(--ink); cursor: pointer; padding: 0; }
-  .searchbar select:focus { outline: none; }
-  .searchbar .find { flex: 0 0 auto; }
+  .contact-grid { display: grid; grid-template-columns: 1fr 380px; gap: 44px; align-items: start; }
+  @media (max-width: 900px) { .contact-grid { grid-template-columns: 1fr; } }
+  .contact-side { background: var(--bg-alt); border: 1px solid var(--line); border-radius: var(--r-lg); padding: 32px; }
+  .consent { display: flex; gap: 10px; align-items: flex-start; font-family: var(--sans); font-size: 13px; color: var(--muted); margin-top: 4px; }
+  .consent input { width: 18px; height: 18px; margin-top: 2px; flex: none; accent-color: var(--plum); }
 </style>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
-
-<div class="topbar">
-  <div class="wrap">
-    <span><strong>Early-bird ends 15 Aug</strong> · Save $300 on the Global Clinical Trials Congress 2026 &nbsp;<a href="event.html?id=global-clinical-trials-congress">Register →</a></span>
-    <button type="button" class="topbar-x" aria-label="Dismiss announcement">&times;</button>
-  </div>
-</div>
 
 <header class="nav" id="nav">
   <div class="wrap nav-inner">
@@ -53,14 +43,14 @@
       </div>
       <a href="sponsors.html">Sponsor</a>
       <a href="insights.html">Insights</a>
-      <a href="contact.html">Contact</a>
+      <a href="contact.html" class="active">Contact</a>
     </nav>
     <div class="nav-right">
       <button type="button" class="theme-btn" aria-label="Toggle light or dark theme">
         <svg class="sun" width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="4.5" stroke="currentColor" stroke-width="2"/><path d="M12 2v2M12 20v2M4 12H2M22 12h-2M5 5l1.5 1.5M17.5 17.5L19 19M19 5l-1.5 1.5M6.5 17.5L5 19" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
         <svg class="moon" width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M21 12.8A9 9 0 1111.2 3a7 7 0 009.8 9.8z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>
       </button>
-      <a class="btn btn-primary btn-sm desk-cta" href="contact.html?intent=proposal">Request a Proposal</a>
+      <a class="btn btn-primary btn-sm desk-cta" href="#form">Request a Proposal</a>
       <button type="button" class="hamb" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
     </div>
   </div>
@@ -77,91 +67,114 @@
     <a href="about.html">About</a>
     <a href="services.html">Services</a>
     <div class="sub">Events</div>
-    <a href="events.html" class="active">Upcoming Events</a>
+    <a href="events.html">Upcoming Events</a>
     <a href="past-events.html">Past Events & Case Studies</a>
     <a href="speakers.html">Speakers</a>
     <div class="sub">More</div>
     <a href="sponsors.html">Sponsor & Exhibit</a>
     <a href="insights.html">Insights</a>
-    <a href="contact.html">Contact</a>
+    <a href="contact.html" class="active">Contact</a>
   </nav>
   <div class="dcta">
-    <a class="btn btn-primary btn-block" href="contact.html?intent=proposal">Request a Proposal</a>
-    <a class="btn btn-ghost btn-block" href="sponsors.html">Sponsor & Exhibit</a>
+    <a class="btn btn-primary btn-block" href="#form">Request a Proposal</a>
+    <a class="btn btn-ghost btn-block" href="events.html">Browse Events</a>
   </div>
 </aside>
 
 <main id="main">
-  <section class="page-hero search-hero">
+  <section class="page-hero">
     <div class="wrap inner">
-      <div class="breadcrumb"><a href="index.html">Home</a><span class="sep">/</span><span>Events</span></div>
-      <p class="eyebrow">Upcoming events</p>
-      <h1>Every conference in the next six months</h1>
-      <p>Filter by format, region and therapeutic area. Prices and formats shown up front — no digging required.</p>
-      <div class="searchbar" role="search">
-        <div class="field">
-          <label for="s-topic">Therapeutic area</label>
-          <select id="s-topic">
-            <option value="all">All areas</option>
-            <option value="Oncology">Oncology</option>
-            <option value="Clinical Trials">Clinical Trials</option>
-            <option value="Drug Discovery">Drug Discovery</option>
-            <option value="Regulatory">Regulatory Affairs</option>
-            <option value="Digital Health">Digital Health</option>
-          </select>
-        </div>
-        <button class="btn btn-primary find" type="button" onclick="document.getElementById('events-list').scrollIntoView({behavior:'smooth'});">Find events</button>
-      </div>
+      <div class="breadcrumb"><a href="index.html">Home</a><span class="sep">/</span><span>Contact</span></div>
+      <p class="eyebrow">Get in touch</p>
+      <h1 id="contactHeading">Let's plan your next event</h1>
+      <p>Tell us your therapy area, audience and dates. We'll come back with an outline plan and quote within 48 hours — no obligation.</p>
     </div>
   </section>
 
-  <section class="sec" id="events-list" style="padding-top:56px;">
-    <div class="wrap">
-      <div class="events-toolbar">
-        <div class="filters" id="filters">
-          <span class="fglabel">Format</span>
-          <button type="button" class="chip active" data-format="all">All</button>
-          <button type="button" class="chip" data-format="In-Person">In-Person</button>
-          <button type="button" class="chip" data-format="Virtual">Virtual</button>
-          <button type="button" class="chip" data-format="Hybrid">Hybrid</button>
-          <span class="fglabel">Region</span>
-          <button type="button" class="chip active" data-region="all">All</button>
-          <button type="button" class="chip" data-region="UK">🇬🇧 UK</button>
-          <button type="button" class="chip" data-region="US">🇺🇸 US</button>
-        </div>
-        <div class="searchmini">
-          <svg width="17" height="17" viewBox="0 0 24 24" fill="none"><circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="2"/><path d="M21 21l-4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-          <input type="text" id="search" placeholder="Search events…" aria-label="Search events">
+  <section class="sec" id="form" style="padding-top:56px;">
+    <div class="wrap contact-grid">
+      <!-- FORM -->
+      <div class="form-card reveal">
+        <form id="contactForm" data-demo novalidate>
+          <div class="field-grid">
+            <div class="field">
+              <label for="c-name">Full name <span class="req">*</span></label>
+              <input type="text" id="c-name" name="name" autocomplete="name" required>
+            </div>
+            <div class="field">
+              <label for="c-company">Company / organisation</label>
+              <input type="text" id="c-company" name="company" autocomplete="organization">
+            </div>
+            <div class="field">
+              <label for="c-email">Work email <span class="req">*</span></label>
+              <input type="email" id="c-email" name="email" autocomplete="email" required>
+            </div>
+            <div class="field">
+              <label for="c-phone">Phone</label>
+              <input type="tel" id="c-phone" name="phone" autocomplete="tel">
+            </div>
+            <div class="field full">
+              <label for="c-subject">How can we help? <span class="req">*</span></label>
+              <select id="c-subject" name="subject" required>
+                <option value="Request a proposal">Request a proposal</option>
+                <option value="Event registration">Event registration</option>
+                <option value="Request event brochure">Request event brochure</option>
+                <option value="Sponsorship enquiry">Sponsorship enquiry</option>
+                <option value="Apply to speak">Apply to speak</option>
+                <option value="General enquiry">General enquiry</option>
+              </select>
+            </div>
+            <div class="field full">
+              <label for="c-message">Your message <span class="req">*</span></label>
+              <textarea id="c-message" name="message" placeholder="Tell us about your event — therapy area, audience, dates, format…" required></textarea>
+            </div>
+          </div>
+          <label class="consent">
+            <input type="checkbox" required>
+            <span>I agree to Catalyst Corp contacting me about my enquiry and accept the privacy policy. We never share your data.</span>
+          </label>
+          <div style="margin-top:22px;">
+            <button class="btn btn-primary btn-lg" type="submit">Send enquiry</button>
+          </div>
+          <p class="form-note">We typically reply within one business day. Prefer email? <a href="mailto:hello@catalystcorp.com" style="color:var(--plum);font-weight:600;">hello@catalystcorp.com</a></p>
+        </form>
+        <div class="form-success">
+          <div class="tick"><svg width="30" height="30" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <h3>Thank you — message received</h3>
+          <p>One of our event specialists will be in touch within one business day.</p>
+          <div style="margin-top:20px;"><a class="btn btn-ghost" href="events.html">Browse events while you wait</a></div>
         </div>
       </div>
-      <div class="count" id="count"></div>
-      <div class="events-grid" id="grid"></div>
-    </div>
-  </section>
 
-  <!-- TOPIC TILES -->
-  <section class="sec alt">
-    <div class="wrap">
-      <div class="sec-head reveal">
-        <p class="eyebrow">Browse by therapeutic area</p>
-        <h2>Find your field</h2>
-      </div>
-      <div class="topics reveal" id="topicTiles"></div>
-    </div>
-  </section>
-
-  <!-- CTA -->
-  <section class="sec">
-    <div class="wrap">
-      <div class="cta-box reveal">
-        <p class="eyebrow">Can't find the right event?</p>
-        <h2>We'll build one for you</h2>
-        <p>From advisory boards to full congresses — tell us what you need and we'll return a plan and quote within 48 hours.</p>
-        <div class="cta-actions">
-          <a class="btn btn-light btn-lg" href="contact.html?intent=proposal">Request a Proposal</a>
-          <a class="btn btn-outline-l btn-lg" href="services.html">Our Services</a>
+      <!-- SIDE INFO -->
+      <aside class="contact-side reveal">
+        <h3 style="font-size:20px;margin-bottom:20px;">Contact details</h3>
+        <div class="cinfo">
+          <div class="ci">
+            <span class="cic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M4 6l8 6 8-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><rect x="3" y="5" width="18" height="14" rx="2" stroke="currentColor" stroke-width="2"/></svg></span>
+            <div><b>Email</b><a href="mailto:hello@catalystcorp.com">hello@catalystcorp.com</a></div>
+          </div>
+          <div class="ci">
+            <span class="cic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M12 21s-7-5-7-11a7 7 0 0114 0c0 6-7 11-7 11z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><circle cx="12" cy="10" r="2.4" stroke="currentColor" stroke-width="2"/></svg></span>
+            <div><b>London</b><a href="tel:+442079460000">+44 20 7946 0000</a><br><span>1 Kingsway, London WC2B 6XF</span></div>
+          </div>
+          <div class="ci">
+            <span class="cic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M12 21s-7-5-7-11a7 7 0 0114 0c0 6-7 11-7 11z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><circle cx="12" cy="10" r="2.4" stroke="currentColor" stroke-width="2"/></svg></span>
+            <div><b>Boston</b><a href="tel:+16175550142">+1 617 555 0142</a><br><span>50 Milk Street, Boston MA 02109</span></div>
+          </div>
+          <div class="ci">
+            <span class="cic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2"/><path d="M12 7v5l3 2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>
+            <div><b>Hours</b><span>Mon–Fri · 9:00–18:00 (GMT / EST)</span></div>
+          </div>
         </div>
-      </div>
+        <div style="margin-top:24px;padding-top:22px;border-top:1px solid var(--line);">
+          <div class="socials" style="margin-top:0;">
+            <a href="https://www.linkedin.com" target="_blank" rel="noopener" aria-label="LinkedIn" style="border-color:var(--line);color:var(--muted);"><svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5A2.5 2.5 0 002.5 6a2.5 2.5 0 005 0 2.5 2.5 0 00-2.52-2.5zM3 8.98h4V21H3zM9 8.98h3.8v1.64h.05c.53-1 1.83-2.06 3.76-2.06C20.4 8.56 21 10.2 21 13v8h-4v-7.1c0-1.7-.03-3.9-2.38-3.9-2.38 0-2.74 1.86-2.74 3.78V21H9z"/></svg></a>
+            <a href="https://x.com" target="_blank" rel="noopener" aria-label="X / Twitter" style="border-color:var(--line);color:var(--muted);"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18.9 2H22l-7.2 8.2L23 22h-6.6l-5.2-6.8L5.3 22H2l7.7-8.8L1.5 2h6.8l4.7 6.2zM17.7 20h1.7L7.4 3.9H5.6z"/></svg></a>
+            <a href="https://www.youtube.com" target="_blank" rel="noopener" aria-label="YouTube" style="border-color:var(--line);color:var(--muted);"><svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M23 12s0-3.2-.4-4.7a2.5 2.5 0 00-1.7-1.7C19.4 5.2 12 5.2 12 5.2s-7.4 0-8.9.4a2.5 2.5 0 00-1.7 1.7C1 8.8 1 12 1 12s0 3.2.4 4.7a2.5 2.5 0 001.7 1.7c1.5.4 8.9.4 8.9.4s7.4 0 8.9-.4a2.5 2.5 0 001.7-1.7C23 15.2 23 12 23 12zM9.8 15.3V8.7l5.7 3.3z"/></svg></a>
+          </div>
+        </div>
+      </aside>
     </div>
   </section>
 </main>
@@ -174,8 +187,8 @@
         <p class="about-txt">Pharma &amp; medical conference specialists — organising healthcare events across the UK and United States since 2012.</p>
       </div>
       <div class="foot-cta">
-        <a class="btn btn-primary" href="contact.html?intent=proposal">Request a Proposal</a>
-        <a class="btn btn-outline-l" href="contact.html">Contact Us</a>
+        <a class="btn btn-primary" href="#form">Request a Proposal</a>
+        <a class="btn btn-outline-l" href="events.html">Browse Events</a>
       </div>
     </div>
     <div class="foot-cols">

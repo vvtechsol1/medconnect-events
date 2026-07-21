@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Upcoming Events — Pharma & Medical Conferences, UK & US | Catalyst Corp</title>
-<meta name="description" content="Browse and filter every upcoming clinical-trials, oncology, drug-discovery, regulatory and digital-health conference by format, region and therapeutic area.">
+<title>Event — Catalyst Corp</title>
+<meta name="description" content="Event details, programme, speakers, sponsors, venue and registration — Catalyst Corp pharma & medical conferences.">
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 <link rel="apple-touch-icon" href="favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -12,26 +12,9 @@
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/css/style.css">
 <script>(function(){try{var t=localStorage.getItem('cc-theme');if(!t)t=matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.setAttribute('data-theme',t);}catch(e){}})();</script>
-<style>
-  .search-hero { padding: 56px 0 40px; }
-  .searchbar { margin-top: 8px; background: var(--surface); border: 1px solid var(--line); border-radius: 16px; box-shadow: var(--sh); padding: 12px; display: flex; gap: 8px; align-items: stretch; flex-wrap: wrap; max-width: 860px; }
-  .searchbar .field { flex: 1; min-width: 130px; display: flex; flex-direction: column; padding: 6px 12px; border-radius: 10px; gap: 0; }
-  .searchbar .field + .field { border-left: 1px solid var(--line-soft); }
-  .searchbar label { font-family: var(--sans); font-size: 10.5px; letter-spacing: 0.09em; text-transform: uppercase; color: var(--muted); font-weight: 700; margin-bottom: 3px; }
-  .searchbar select { border: none; background: transparent; font-family: var(--sans); font-size: 14.5px; font-weight: 600; color: var(--ink); cursor: pointer; padding: 0; }
-  .searchbar select:focus { outline: none; }
-  .searchbar .find { flex: 0 0 auto; }
-</style>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
-
-<div class="topbar">
-  <div class="wrap">
-    <span><strong>Early-bird ends 15 Aug</strong> · Save $300 on the Global Clinical Trials Congress 2026 &nbsp;<a href="event.html?id=global-clinical-trials-congress">Register →</a></span>
-    <button type="button" class="topbar-x" aria-label="Dismiss announcement">&times;</button>
-  </div>
-</div>
 
 <header class="nav" id="nav">
   <div class="wrap nav-inner">
@@ -87,84 +70,16 @@
   </nav>
   <div class="dcta">
     <a class="btn btn-primary btn-block" href="contact.html?intent=proposal">Request a Proposal</a>
-    <a class="btn btn-ghost btn-block" href="sponsors.html">Sponsor & Exhibit</a>
+    <a class="btn btn-ghost btn-block" href="events.html">Browse Events</a>
   </div>
 </aside>
 
 <main id="main">
-  <section class="page-hero search-hero">
-    <div class="wrap inner">
-      <div class="breadcrumb"><a href="index.html">Home</a><span class="sep">/</span><span>Events</span></div>
-      <p class="eyebrow">Upcoming events</p>
-      <h1>Every conference in the next six months</h1>
-      <p>Filter by format, region and therapeutic area. Prices and formats shown up front — no digging required.</p>
-      <div class="searchbar" role="search">
-        <div class="field">
-          <label for="s-topic">Therapeutic area</label>
-          <select id="s-topic">
-            <option value="all">All areas</option>
-            <option value="Oncology">Oncology</option>
-            <option value="Clinical Trials">Clinical Trials</option>
-            <option value="Drug Discovery">Drug Discovery</option>
-            <option value="Regulatory">Regulatory Affairs</option>
-            <option value="Digital Health">Digital Health</option>
-          </select>
-        </div>
-        <button class="btn btn-primary find" type="button" onclick="document.getElementById('events-list').scrollIntoView({behavior:'smooth'});">Find events</button>
-      </div>
-    </div>
-  </section>
-
-  <section class="sec" id="events-list" style="padding-top:56px;">
-    <div class="wrap">
-      <div class="events-toolbar">
-        <div class="filters" id="filters">
-          <span class="fglabel">Format</span>
-          <button type="button" class="chip active" data-format="all">All</button>
-          <button type="button" class="chip" data-format="In-Person">In-Person</button>
-          <button type="button" class="chip" data-format="Virtual">Virtual</button>
-          <button type="button" class="chip" data-format="Hybrid">Hybrid</button>
-          <span class="fglabel">Region</span>
-          <button type="button" class="chip active" data-region="all">All</button>
-          <button type="button" class="chip" data-region="UK">🇬🇧 UK</button>
-          <button type="button" class="chip" data-region="US">🇺🇸 US</button>
-        </div>
-        <div class="searchmini">
-          <svg width="17" height="17" viewBox="0 0 24 24" fill="none"><circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="2"/><path d="M21 21l-4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-          <input type="text" id="search" placeholder="Search events…" aria-label="Search events">
-        </div>
-      </div>
-      <div class="count" id="count"></div>
-      <div class="events-grid" id="grid"></div>
-    </div>
-  </section>
-
-  <!-- TOPIC TILES -->
-  <section class="sec alt">
-    <div class="wrap">
-      <div class="sec-head reveal">
-        <p class="eyebrow">Browse by therapeutic area</p>
-        <h2>Find your field</h2>
-      </div>
-      <div class="topics reveal" id="topicTiles"></div>
-    </div>
-  </section>
-
-  <!-- CTA -->
-  <section class="sec">
-    <div class="wrap">
-      <div class="cta-box reveal">
-        <p class="eyebrow">Can't find the right event?</p>
-        <h2>We'll build one for you</h2>
-        <p>From advisory boards to full congresses — tell us what you need and we'll return a plan and quote within 48 hours.</p>
-        <div class="cta-actions">
-          <a class="btn btn-light btn-lg" href="contact.html?intent=proposal">Request a Proposal</a>
-          <a class="btn btn-outline-l btn-lg" href="services.html">Our Services</a>
-        </div>
-      </div>
-    </div>
-  </section>
+  <div id="eventDetail"></div>
 </main>
+
+<!-- Mobile sticky register bar (populated by site.js) -->
+<div class="mobile-cta" id="mcta"></div>
 
 <footer class="site">
   <div class="wrap">

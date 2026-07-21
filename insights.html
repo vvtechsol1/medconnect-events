@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Upcoming Events — Pharma & Medical Conferences, UK & US | Catalyst Corp</title>
-<meta name="description" content="Browse and filter every upcoming clinical-trials, oncology, drug-discovery, regulatory and digital-health conference by format, region and therapeutic area.">
+<title>Insights & Resources — Catalyst Corp</title>
+<meta name="description" content="Practical guidance on running compliant, high-impact clinical-trials and drug-discovery events — from investigator meetings to decentralised trials and beyond.">
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
 <link rel="apple-touch-icon" href="favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -13,25 +13,14 @@
 <link rel="stylesheet" href="assets/css/style.css">
 <script>(function(){try{var t=localStorage.getItem('cc-theme');if(!t)t=matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';document.documentElement.setAttribute('data-theme',t);}catch(e){}})();</script>
 <style>
-  .search-hero { padding: 56px 0 40px; }
-  .searchbar { margin-top: 8px; background: var(--surface); border: 1px solid var(--line); border-radius: 16px; box-shadow: var(--sh); padding: 12px; display: flex; gap: 8px; align-items: stretch; flex-wrap: wrap; max-width: 860px; }
-  .searchbar .field { flex: 1; min-width: 130px; display: flex; flex-direction: column; padding: 6px 12px; border-radius: 10px; gap: 0; }
-  .searchbar .field + .field { border-left: 1px solid var(--line-soft); }
-  .searchbar label { font-family: var(--sans); font-size: 10.5px; letter-spacing: 0.09em; text-transform: uppercase; color: var(--muted); font-weight: 700; margin-bottom: 3px; }
-  .searchbar select { border: none; background: transparent; font-family: var(--sans); font-size: 14.5px; font-weight: 600; color: var(--ink); cursor: pointer; padding: 0; }
-  .searchbar select:focus { outline: none; }
-  .searchbar .find { flex: 0 0 auto; }
+  .feature-post { display: grid; grid-template-columns: 1.1fr 1fr; gap: 40px; align-items: center; background: var(--surface); border: 1px solid var(--line); border-radius: var(--r-lg); overflow: hidden; box-shadow: var(--sh); }
+  .feature-post .fp-img { min-height: 320px; background-size: cover; background-position: center; }
+  .feature-post .fp-body { padding: 40px; }
+  @media (max-width: 820px) { .feature-post { grid-template-columns: 1fr; } .feature-post .fp-img { min-height: 220px; } .feature-post .fp-body { padding: 28px; } }
 </style>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
-
-<div class="topbar">
-  <div class="wrap">
-    <span><strong>Early-bird ends 15 Aug</strong> · Save $300 on the Global Clinical Trials Congress 2026 &nbsp;<a href="event.html?id=global-clinical-trials-congress">Register →</a></span>
-    <button type="button" class="topbar-x" aria-label="Dismiss announcement">&times;</button>
-  </div>
-</div>
 
 <header class="nav" id="nav">
   <div class="wrap nav-inner">
@@ -52,7 +41,7 @@
         </div>
       </div>
       <a href="sponsors.html">Sponsor</a>
-      <a href="insights.html">Insights</a>
+      <a href="insights.html" class="active">Insights</a>
       <a href="contact.html">Contact</a>
     </nav>
     <div class="nav-right">
@@ -77,89 +66,100 @@
     <a href="about.html">About</a>
     <a href="services.html">Services</a>
     <div class="sub">Events</div>
-    <a href="events.html" class="active">Upcoming Events</a>
+    <a href="events.html">Upcoming Events</a>
     <a href="past-events.html">Past Events & Case Studies</a>
     <a href="speakers.html">Speakers</a>
     <div class="sub">More</div>
     <a href="sponsors.html">Sponsor & Exhibit</a>
-    <a href="insights.html">Insights</a>
+    <a href="insights.html" class="active">Insights</a>
     <a href="contact.html">Contact</a>
   </nav>
   <div class="dcta">
     <a class="btn btn-primary btn-block" href="contact.html?intent=proposal">Request a Proposal</a>
-    <a class="btn btn-ghost btn-block" href="sponsors.html">Sponsor & Exhibit</a>
+    <a class="btn btn-ghost btn-block" href="events.html">Browse Events</a>
   </div>
 </aside>
 
 <main id="main">
-  <section class="page-hero search-hero">
+  <section class="page-hero">
     <div class="wrap inner">
-      <div class="breadcrumb"><a href="index.html">Home</a><span class="sep">/</span><span>Events</span></div>
-      <p class="eyebrow">Upcoming events</p>
-      <h1>Every conference in the next six months</h1>
-      <p>Filter by format, region and therapeutic area. Prices and formats shown up front — no digging required.</p>
-      <div class="searchbar" role="search">
-        <div class="field">
-          <label for="s-topic">Therapeutic area</label>
-          <select id="s-topic">
-            <option value="all">All areas</option>
-            <option value="Oncology">Oncology</option>
-            <option value="Clinical Trials">Clinical Trials</option>
-            <option value="Drug Discovery">Drug Discovery</option>
-            <option value="Regulatory">Regulatory Affairs</option>
-            <option value="Digital Health">Digital Health</option>
-          </select>
-        </div>
-        <button class="btn btn-primary find" type="button" onclick="document.getElementById('events-list').scrollIntoView({behavior:'smooth'});">Find events</button>
-      </div>
+      <div class="breadcrumb"><a href="index.html">Home</a><span class="sep">/</span><span>Insights</span></div>
+      <p class="eyebrow">Insights &amp; resources</p>
+      <h1>Ideas for better scientific events</h1>
+      <p>Practical guidance from fourteen years of running compliant, high-impact conferences and meetings for pharma and medical teams.</p>
     </div>
   </section>
 
-  <section class="sec" id="events-list" style="padding-top:56px;">
+  <!-- FEATURED -->
+  <section class="sec tight">
     <div class="wrap">
-      <div class="events-toolbar">
-        <div class="filters" id="filters">
-          <span class="fglabel">Format</span>
-          <button type="button" class="chip active" data-format="all">All</button>
-          <button type="button" class="chip" data-format="In-Person">In-Person</button>
-          <button type="button" class="chip" data-format="Virtual">Virtual</button>
-          <button type="button" class="chip" data-format="Hybrid">Hybrid</button>
-          <span class="fglabel">Region</span>
-          <button type="button" class="chip active" data-region="all">All</button>
-          <button type="button" class="chip" data-region="UK">🇬🇧 UK</button>
-          <button type="button" class="chip" data-region="US">🇺🇸 US</button>
+      <article class="feature-post reveal" id="trust">
+        <div class="fp-img" style="background-image:url('https://images.unsplash.com/photo-1475721027785-f74eccf877e2?auto=format&fit=crop&w=1000&q=72');"></div>
+        <div class="fp-body">
+          <div class="post"><div class="cat">Featured · Clinical Ops</div></div>
+          <h2 style="font-size:clamp(24px,3vw,34px);margin-bottom:12px;">Building trust with your trial sites</h2>
+          <p class="lede" style="margin-bottom:20px;">Site relationships make or break a trial. Here's how the best sponsors turn investigator meetings into lasting partnerships — and keep activation on schedule.</p>
+          <div class="post"><div class="meta" style="margin-bottom:18px;">Jul 12, 2026 · 6 min read</div></div>
+          <a class="btn btn-primary" href="contact.html">Read the guide</a>
         </div>
-        <div class="searchmini">
-          <svg width="17" height="17" viewBox="0 0 24 24" fill="none"><circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="2"/><path d="M21 21l-4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-          <input type="text" id="search" placeholder="Search events…" aria-label="Search events">
-        </div>
-      </div>
-      <div class="count" id="count"></div>
-      <div class="events-grid" id="grid"></div>
+      </article>
     </div>
   </section>
 
-  <!-- TOPIC TILES -->
+  <!-- ARTICLE GRID -->
+  <section class="sec" style="padding-top:40px;">
+    <div class="wrap">
+      <div class="blog-grid reveal">
+        <a class="post" href="contact.html" id="investigator">
+          <div class="pi" style="background-image:url('https://images.unsplash.com/photo-1515187029135-18ee286d815b?auto=format&fit=crop&w=800&q=72');"></div>
+          <div class="cat">Best Practice</div>
+          <h3>Strategies for successful investigator meetings</h3>
+          <div class="meta">Jul 08, 2026 · 5 min read</div>
+        </a>
+        <a class="post" href="contact.html" id="decentralized">
+          <div class="pi" style="background-image:url('https://images.unsplash.com/photo-1587825140708-dfaf72ae4b04?auto=format&fit=crop&w=800&q=72');"></div>
+          <div class="cat">Innovation</div>
+          <h3>Decentralized trials: lessons from the field</h3>
+          <div class="meta">Jun 30, 2026 · 7 min read</div>
+        </a>
+        <a class="post" href="contact.html">
+          <div class="pi" style="background-image:url('https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=800&q=72');"></div>
+          <div class="cat">Compliance</div>
+          <h3>CME / CPD accreditation without the headache</h3>
+          <div class="meta">Jun 21, 2026 · 4 min read</div>
+        </a>
+        <a class="post" href="contact.html">
+          <div class="pi" style="background-image:url('https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=800&q=72');"></div>
+          <div class="cat">Hybrid Events</div>
+          <h3>Designing hybrid events people actually attend</h3>
+          <div class="meta">Jun 14, 2026 · 6 min read</div>
+        </a>
+        <a class="post" href="contact.html">
+          <div class="pi" style="background-image:url('https://images.unsplash.com/photo-1505373877841-8d25f7d46678?auto=format&fit=crop&w=800&q=72');"></div>
+          <div class="cat">Drug Discovery</div>
+          <h3>What AI means for the discovery conference agenda</h3>
+          <div class="meta">Jun 02, 2026 · 5 min read</div>
+        </a>
+        <a class="post" href="contact.html">
+          <div class="pi" style="background-image:url('https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=800&q=72');"></div>
+          <div class="cat">Sponsorship</div>
+          <h3>How to measure real ROI from event sponsorship</h3>
+          <div class="meta">May 27, 2026 · 6 min read</div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- NEWSLETTER CTA -->
   <section class="sec alt">
     <div class="wrap">
-      <div class="sec-head reveal">
-        <p class="eyebrow">Browse by therapeutic area</p>
-        <h2>Find your field</h2>
-      </div>
-      <div class="topics reveal" id="topicTiles"></div>
-    </div>
-  </section>
-
-  <!-- CTA -->
-  <section class="sec">
-    <div class="wrap">
       <div class="cta-box reveal">
-        <p class="eyebrow">Can't find the right event?</p>
-        <h2>We'll build one for you</h2>
-        <p>From advisory boards to full congresses — tell us what you need and we'll return a plan and quote within 48 hours.</p>
+        <p class="eyebrow">Stay in the loop</p>
+        <h2>New insights &amp; events, monthly</h2>
+        <p>Join thousands of clinical, scientific and commercial leaders who get our best guidance and earliest event access.</p>
         <div class="cta-actions">
-          <a class="btn btn-light btn-lg" href="contact.html?intent=proposal">Request a Proposal</a>
-          <a class="btn btn-outline-l btn-lg" href="services.html">Our Services</a>
+          <a class="btn btn-light btn-lg" href="contact.html">Subscribe</a>
+          <a class="btn btn-outline-l btn-lg" href="events.html">Browse Events</a>
         </div>
       </div>
     </div>
