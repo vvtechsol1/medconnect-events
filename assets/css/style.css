@@ -431,7 +431,12 @@ body.menu-open .drawer { transform: none; }
 .daytab[aria-selected="true"]::after { content: ""; position: absolute; left: 0; bottom: -17px; height: 2px; width: 100%; background: var(--magenta); }
 .daypanel { display: none; position: relative; z-index: 2; }
 .daypanel.active { display: block; }
-.slot { display: grid; grid-template-columns: 130px 1fr 190px 180px 44px; gap: 20px; align-items: center; padding: 22px 0; border-bottom: 1px solid rgba(255,255,255,0.12); }
+.slot { position: relative; overflow: hidden; display: grid; grid-template-columns: 130px 1fr 190px 180px 44px; gap: 20px; align-items: center; padding: 22px 18px; margin: 0 -18px; border-radius: 12px; border-bottom: 1px solid rgba(255,255,255,0.12); }
+.slot::before { content: ""; position: absolute; inset: 0; z-index: 0; pointer-events: none; border-radius: 12px;
+  background: linear-gradient(90deg, rgba(214,64,159,0.26) 0%, rgba(134,40,111,0.12) 42%, rgba(134,40,111,0.02) 72%, transparent 100%);
+  transform: scaleX(0); transform-origin: left center; transition: transform .55s var(--ease); }
+.slot:hover::before, .slot:focus-visible::before { transform: scaleX(1); }
+.slot > * { position: relative; z-index: 1; }
 .slot .time { font-family: var(--sans); font-weight: 700; font-variant-numeric: tabular-nums; }
 .slot .time span { display: block; font-size: 12px; color: rgba(255,255,255,0.5); font-weight: 500; }
 .slot .ti { font-family: var(--serif); font-size: 19px; font-weight: 600; color: #fff; letter-spacing: -0.01em; }
