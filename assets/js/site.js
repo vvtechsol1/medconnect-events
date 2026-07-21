@@ -599,12 +599,12 @@
     var intent = params.get("intent"), event = params.get("event");
     var subject = $("#c-subject"), msg = $("#c-message"), heading = $("#contactHeading");
     if (intent && subject) {
-      var map = { register: "Event registration", brochure: "Request event brochure", proposal: "Request a proposal", sponsor: "Sponsorship enquiry", speak: "Apply to speak" };
+      var map = { register: "Event registration", brochure: "Request event brochure", proposal: "Book a consultation", sponsor: "Sponsorship enquiry", speak: "Apply to speak" };
       if (map[intent]) { for (var i = 0; i < subject.options.length; i++) if (subject.options[i].value === map[intent]) subject.selectedIndex = i; }
     }
     if (event && msg) msg.value = "Regarding: " + event + "\n\n";
     if (intent && heading) {
-      var h = { register: "Register your interest", brochure: "Get the event brochure", proposal: "Request a proposal", sponsor: "Enquire about sponsorship" };
+      var h = { register: "Register your interest", brochure: "Get the event brochure", proposal: "Book a consultation", sponsor: "Enquire about sponsorship" };
       if (h[intent]) heading.textContent = h[intent];
     }
   })();
