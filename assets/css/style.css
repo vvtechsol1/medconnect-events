@@ -383,6 +383,24 @@ body.menu-open .drawer { transform: none; }
 @media (max-width: 860px) { .topics { grid-template-columns: 1fr 1fr; } }
 @media (max-width: 560px) { .topics { grid-template-columns: 1fr; } }
 
+/* ---------- Ambient gradient bubbles ---------- */
+.fx-host { position: relative; overflow: hidden; }
+.fx-host > .wrap { position: relative; z-index: 1; }
+.fx-bubbles { position: absolute; inset: 0; z-index: 0; overflow: hidden; pointer-events: none; }
+.fx-bubbles .b { position: absolute; border-radius: 50%; filter: blur(50px); opacity: 0.28; animation: bubbleFloat 18s ease-in-out infinite; will-change: transform, opacity; }
+.fx-bubbles .b1 { width: 340px; height: 340px; left: 4%; top: 8%; background: radial-gradient(circle, rgba(192,50,143,0.55), transparent 70%); animation-duration: 17s; }
+.fx-bubbles .b2 { width: 260px; height: 260px; right: 8%; top: 4%; background: radial-gradient(circle, rgba(109,58,168,0.5), transparent 70%); animation-duration: 21s; animation-delay: -5s; }
+.fx-bubbles .b3 { width: 400px; height: 400px; left: 32%; bottom: -14%; background: radial-gradient(circle, rgba(199,125,20,0.4), transparent 70%); animation-duration: 24s; animation-delay: -9s; }
+.fx-bubbles .b4 { width: 220px; height: 220px; right: 26%; bottom: 2%; background: radial-gradient(circle, rgba(134,40,111,0.5), transparent 70%); animation-duration: 19s; animation-delay: -3s; }
+.fx-bubbles .b5 { width: 180px; height: 180px; left: 12%; bottom: 12%; background: radial-gradient(circle, rgba(214,64,159,0.45), transparent 70%); animation-duration: 15s; animation-delay: -7s; }
+@keyframes bubbleFloat {
+  0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.22; }
+  25% { transform: translate(34px, -28px) scale(1.1); opacity: 0.5; }
+  50% { transform: translate(-22px, 18px) scale(0.92); opacity: 0.32; }
+  75% { transform: translate(20px, 30px) scale(1.06); opacity: 0.48; }
+}
+@media (prefers-reduced-motion: reduce) { .fx-bubbles .b { animation: none; opacity: 0.3; } }
+
 /* ---------- Speakers ---------- */
 .spk-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 22px; }
 .spk { text-align: center; }
