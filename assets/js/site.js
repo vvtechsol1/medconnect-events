@@ -41,6 +41,21 @@
   /* ---------- Footer year ---------- */
   $$(".js-year").forEach(function (el) { el.textContent = new Date().getFullYear(); });
 
+  /* ---------- Back to top ---------- */
+  (function () {
+    var btn = document.createElement("button");
+    btn.type = "button"; btn.className = "to-top"; btn.setAttribute("aria-label", "Back to top");
+    btn.innerHTML = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M12 19V5M6 11l6-6 6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+    document.body.appendChild(btn);
+    var onScroll = function () { btn.classList.toggle("show", window.scrollY > 500); };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    onScroll();
+    btn.addEventListener("click", function () {
+      if (window.__lenis) window.__lenis.scrollTo(0, { duration: 1.1 });
+      else window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+  })();
+
   /* ---------- Reveal on scroll ----------
      Handled by assets/js/anim.js (GSAP). This is only a safety net for when
      anim.js / GSAP never run: show everything and drop the pre-paint hide. */
