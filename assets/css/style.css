@@ -383,6 +383,38 @@ body.menu-open .drawer { transform: none; }
 .cta-box p { font-family: var(--sans); color: rgba(255,255,255,0.85); font-size: 18px; margin: 16px auto 30px; max-width: 54ch; position: relative; }
 .cta-actions { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; position: relative; }
 
+/* ---------- Video band ---------- */
+.video { height: 460px; position: relative; display: grid; place-items: center;
+  background: linear-gradient(rgba(38,12,33,0.42),rgba(38,12,33,0.42)), url('https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=1700&q=72') center/cover; }
+.play { width: 92px; height: 92px; border-radius: 50%; background: rgba(255,255,255,0.95); display: grid; place-items: center; cursor: pointer; border: none; box-shadow: 0 20px 50px rgba(0,0,0,0.35); transition: transform .2s var(--ease); }
+.play:hover { transform: scale(1.08); }
+.play::after { content: ""; margin-left: 5px; border-left: 20px solid var(--plum); border-top: 13px solid transparent; border-bottom: 13px solid transparent; }
+
+/* ---------- Calendar (dark plum agenda) ---------- */
+.calendar { background: var(--plum-deep); color: #fff; padding: 96px 0; position: relative; overflow: hidden; }
+:root[data-theme="dark"] .calendar { background: #0E0710; }
+.calendar::after { content: ""; position: absolute; right: -120px; top: 40px; width: 420px; height: 420px; border-radius: 50%; background: radial-gradient(circle, rgba(192,50,143,0.28), transparent 68%); pointer-events: none; }
+.cal-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 20px; position: relative; z-index: 2; margin-bottom: 30px; }
+.cal-head .eyebrow { color: #E9A7D4; }
+.cal-head h2 { color: #fff; font-size: clamp(30px, 4.6vw, 50px); letter-spacing: -0.03em; }
+.cal-head .more { color: #fff; font-weight: 600; font-size: 14.5px; display: inline-flex; gap: 9px; align-items: center; white-space: nowrap; font-family: var(--sans); }
+.cal-head .more:hover { color: var(--magenta); }
+.daytabs { display: flex; gap: 30px; border-bottom: 1px solid rgba(255,255,255,0.14); padding-bottom: 16px; margin-bottom: 8px; position: relative; z-index: 2; flex-wrap: wrap; }
+.daytab { background: none; border: none; color: rgba(255,255,255,0.55); font-family: var(--sans); font-size: 15px; font-weight: 700; cursor: pointer; padding: 0; position: relative; }
+.daytab[aria-selected="true"] { color: #fff; }
+.daytab[aria-selected="true"]::after { content: ""; position: absolute; left: 0; bottom: -17px; height: 2px; width: 100%; background: var(--magenta); }
+.daypanel { display: none; position: relative; z-index: 2; }
+.daypanel.active { display: block; }
+.slot { display: grid; grid-template-columns: 130px 1fr 190px 180px 44px; gap: 20px; align-items: center; padding: 22px 0; border-bottom: 1px solid rgba(255,255,255,0.12); }
+.slot .time { font-family: var(--sans); font-weight: 700; font-variant-numeric: tabular-nums; }
+.slot .time span { display: block; font-size: 12px; color: rgba(255,255,255,0.5); font-weight: 500; }
+.slot .ti { font-family: var(--serif); font-size: 19px; font-weight: 600; color: #fff; letter-spacing: -0.01em; }
+.slot .sp b, .slot .lo b { display: block; color: #fff; font-weight: 600; font-size: 14.5px; font-family: var(--sans); }
+.slot .sp span, .slot .lo span { font-size: 12.5px; color: rgba(255,255,255,0.5); font-family: var(--sans); }
+.slot .go { width: 40px; height: 40px; border: 1px solid rgba(255,255,255,0.3); border-radius: 50%; display: grid; place-items: center; color: #fff; transition: all .2s; }
+.slot:hover .go { background: var(--magenta); border-color: var(--magenta); }
+@media (max-width: 860px) { .slot { grid-template-columns: 1fr; gap: 6px; } .slot .go { display: none; } .slot .time span { display: inline; margin-left: 8px; } }
+
 /* ---------- Marquee ---------- */
 .marquee { padding: 8px 0; overflow: hidden; }
 .marquee-track { display: flex; gap: 36px; width: max-content; animation: scroll 34s linear infinite; align-items: center; }
@@ -552,7 +584,7 @@ footer.site .foot-cta { display: flex; gap: 12px; flex-wrap: wrap; }
 
 /* ---------- Top deadline banner ---------- */
 .topbar { background: linear-gradient(90deg, var(--plum-ink), var(--plum)); color: #fff; font-family: var(--sans); font-size: 13.5px; }
-.topbar .wrap { display: flex; align-items: center; justify-content: center; gap: 14px; padding: 9px 26px; position: relative; text-align: center; }
+.topbar .wrap { display: flex; align-items: center; justify-content: flex-start; gap: 14px; padding: 9px 26px; position: relative; text-align: left; }
 .topbar a { color: #fff; font-weight: 700; text-decoration: underline; text-underline-offset: 3px; }
 .topbar strong { color: #FCE1F1; }
 .topbar-x { position: absolute; right: 16px; top: 50%; transform: translateY(-50%); background: none; border: none; color: rgba(255,255,255,0.8); cursor: pointer; font-size: 18px; line-height: 1; padding: 4px; }

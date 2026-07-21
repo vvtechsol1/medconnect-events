@@ -124,14 +124,14 @@
   var REG_COLOR = { "UK": "var(--uk)", "US": "var(--us)", "Global": "#C0328F" };
 
   var SPEAKERS = [
-    { id: "elena-marsh", n: "Dr. Elena Marsh", r: "Chief Scientific Officer", o: "Cortex Pharma", c: "linear-gradient(135deg,#4E1A44,#C0328F)", topic: "Drug Discovery", bio: "Elena leads discovery strategy at Cortex Pharma, with 20+ years advancing small-molecule and biologics programmes from target validation to Phase III. She chairs our flagship discovery track." },
-    { id: "raj-patel", n: "Prof. Raj Patel", r: "Discovery Lab Director", o: "Genalyx", c: "linear-gradient(135deg,#4A2170,#6D3AA8)", topic: "Drug Discovery", bio: "Raj runs Genalyx's AI-driven target identification lab and holds a chair in medicinal chemistry. His work on machine-learning-guided screening has reshaped early discovery pipelines." },
-    { id: "anna-sanders", n: "Anna Sanders", r: "VP Clinical Operations", o: "Halcyon CRO", c: "linear-gradient(135deg,#7A3E6A,#B4568F)", topic: "Clinical Trials", bio: "Anna has delivered 60+ global trials, specialising in decentralised and hybrid designs. She advises sponsors on site activation, patient retention and operational compliance." },
-    { id: "brian-long", n: "Dr. Brian Long", r: "Principal Scientist", o: "Aria Therapeutics", c: "linear-gradient(135deg,#5B2A7A,#B92D82)", topic: "Drug Discovery", bio: "Brian's team pioneers structure-based drug design for rare disease targets. He is a frequent voice on translational medicine and bench-to-bedside acceleration." },
-    { id: "sofia-alvarez", n: "Dr. Sofia Alvarez", r: "Head of Patient Engagement", o: "NovaBio", c: "linear-gradient(135deg,#4E1A44,#8A4CB0)", topic: "Clinical Trials", bio: "Sofia designs patient-centric trial frameworks and diversity-in-research programmes adopted across NovaBio's global portfolio." },
-    { id: "john-lewis", n: "John Lewis", r: "Regulatory Affairs Director", o: "BioAscent", c: "linear-gradient(135deg,#5B2A7A,#6D3AA8)", topic: "Regulatory", bio: "John steers FDA and EMA submissions for complex biologics and has led 30+ successful marketing authorisation applications." },
-    { id: "rosalia-bell", n: "Rosalia Bell", r: "Real-World Evidence Lead", o: "Verdant Labs", c: "linear-gradient(135deg,#7A3E6A,#C0328F)", topic: "Digital Health", bio: "Rosalia builds RWE and health-data strategies that bridge clinical development and market access, with a focus on rare and orphan indications." },
-    { id: "lisa-parker", n: "Lisa Parker", r: "Clinical Programme Lead", o: "Meridian Rx", c: "linear-gradient(135deg,#4A2170,#B4568F)", topic: "Clinical Trials", bio: "Lisa specialises in investigator engagement and protocol training, running high-retention site networks across the UK and US." }
+    { id: "elena-marsh", img: "1494790108377-be9c29b29330", n: "Dr. Elena Marsh", r: "Chief Scientific Officer", o: "Cortex Pharma", c: "linear-gradient(135deg,#4E1A44,#C0328F)", topic: "Drug Discovery", bio: "Elena leads discovery strategy at Cortex Pharma, with 20+ years advancing small-molecule and biologics programmes from target validation to Phase III. She chairs our flagship discovery track." },
+    { id: "raj-patel", img: "1500648767791-00dcc994a43e", n: "Prof. Raj Patel", r: "Discovery Lab Director", o: "Genalyx", c: "linear-gradient(135deg,#4A2170,#6D3AA8)", topic: "Drug Discovery", bio: "Raj runs Genalyx's AI-driven target identification lab and holds a chair in medicinal chemistry. His work on machine-learning-guided screening has reshaped early discovery pipelines." },
+    { id: "anna-sanders", img: "1507003211169-0a1dd7228f2d", n: "Anna Sanders", r: "VP Clinical Operations", o: "Halcyon CRO", c: "linear-gradient(135deg,#7A3E6A,#B4568F)", topic: "Clinical Trials", bio: "Anna has delivered 60+ global trials, specialising in decentralised and hybrid designs. She advises sponsors on site activation, patient retention and operational compliance." },
+    { id: "brian-long", img: "1519085360753-af0119f7cbe7", n: "Dr. Brian Long", r: "Principal Scientist", o: "Aria Therapeutics", c: "linear-gradient(135deg,#5B2A7A,#B92D82)", topic: "Drug Discovery", bio: "Brian's team pioneers structure-based drug design for rare disease targets. He is a frequent voice on translational medicine and bench-to-bedside acceleration." },
+    { id: "sofia-alvarez", img: "1580489944761-15a19d654956", n: "Dr. Sofia Alvarez", r: "Head of Patient Engagement", o: "NovaBio", c: "linear-gradient(135deg,#4E1A44,#8A4CB0)", topic: "Clinical Trials", bio: "Sofia designs patient-centric trial frameworks and diversity-in-research programmes adopted across NovaBio's global portfolio." },
+    { id: "john-lewis", img: "1568602471122-7832951cc4c5", n: "John Lewis", r: "Regulatory Affairs Director", o: "BioAscent", c: "linear-gradient(135deg,#5B2A7A,#6D3AA8)", topic: "Regulatory", bio: "John steers FDA and EMA submissions for complex biologics and has led 30+ successful marketing authorisation applications." },
+    { id: "rosalia-bell", img: "1573497019940-1c28c88b4f3e", n: "Rosalia Bell", r: "Real-World Evidence Lead", o: "Verdant Labs", c: "linear-gradient(135deg,#7A3E6A,#C0328F)", topic: "Digital Health", bio: "Rosalia builds RWE and health-data strategies that bridge clinical development and market access, with a focus on rare and orphan indications." },
+    { id: "lisa-parker", img: "1607990281513-2c110a25bd8c", n: "Lisa Parker", r: "Clinical Programme Lead", o: "Meridian Rx", c: "linear-gradient(135deg,#4A2170,#B4568F)", topic: "Clinical Trials", bio: "Lisa specialises in investigator engagement and protocol training, running high-retention site networks across the UK and US." }
   ];
 
   // Upcoming events. Rich detail on flagships; graceful fallbacks for the rest.
@@ -194,6 +194,10 @@
   function speakerById(id) { for (var i = 0; i < SPEAKERS.length; i++) if (SPEAKERS[i].id === id) return SPEAKERS[i]; return null; }
   function eventById(id) { for (var i = 0; i < EVENTS.length; i++) if (EVENTS[i].id === id) return EVENTS[i]; return null; }
   function initials(n) { return n.replace(/^(Dr\.|Prof\.)\s*/, "").split(" ").map(function (p) { return p[0]; }).slice(0, 2).join(""); }
+  function phHtml(s) {
+    if (s.img) return '<div class="ph" style="background-color:#4E1A44;background-image:url(\'https://images.unsplash.com/photo-' + s.img + '?auto=format&fit=crop&w=600&q=72\');background-size:cover;background-position:center top;"></div>';
+    return '<div class="ph" style="background:' + s.c + '"><div class="ini">' + initials(s.n) + '</div></div>';
+  }
   function pin() { return '<svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M12 21s-7-5-7-11a7 7 0 0114 0c0 6-7 11-7 11z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><circle cx="12" cy="10" r="2.4" stroke="currentColor" stroke-width="2"/></svg>'; }
 
   function eventCard(e) {
@@ -324,13 +328,73 @@
   })();
 
   /* ============================================================
+     HOME CALENDAR / UPCOMING FORUMS  (#daypanels)
+     ============================================================ */
+  (function () {
+    var panels = $("#daypanels");
+    if (!panels) return;
+    var DAYS = {
+      1: [
+        ["09:00", "09:45", "Opening Keynote: The Next Decade of Drug Discovery", "Dr. Elena Marsh", "Cortex Pharma", "New York", "Main Stage"],
+        ["10:15", "11:15", "AI & Machine Learning in Target Identification", "Prof. Raj Patel", "Genalyx", "New York", "Discovery Track"],
+        ["13:30", "14:45", "Panel: Designing Patient-Centric Clinical Trials", "Dr. Sofia Alvarez", "NovaBio", "New York", "Clinical Ops"],
+        ["15:00", "16:00", "Regulatory Strategy & Global Submissions", "John Lewis", "BioAscent", "New York", "Regulatory"]
+      ],
+      2: [
+        ["09:00", "09:50", "Decentralized Trials at Scale", "Anna Sanders", "Halcyon CRO", "New York", "Main Stage"],
+        ["10:30", "11:30", "Medicinal Chemistry Breakthroughs", "Dr. Brian Long", "Aria Therapeutics", "New York", "Discovery Track"],
+        ["14:00", "15:30", "Investigator Meeting Best Practices", "Lisa Parker", "Meridian Rx", "New York", "Clinical Ops"],
+        ["16:00", "17:00", "Real-World Evidence & Data", "Rosalia Bell", "Verdant Labs", "New York", "Digital Health"]
+      ],
+      3: [
+        ["09:30", "10:15", "Rare & Orphan Drug Development Roundtable", "Rosalia Bell", "Verdant Labs", "New York", "Clinical Ops"],
+        ["11:00", "12:00", "FDA & EMA Submission Masterclass", "John Lewis", "BioAscent", "New York", "Regulatory"],
+        ["13:30", "14:30", "Closing Keynote: From Bench to Bedside", "Dr. Elena Marsh", "Cortex Pharma", "New York", "Main Stage"]
+      ]
+    };
+    var arrow = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+    Object.keys(DAYS).forEach(function (d) {
+      var rows = DAYS[d].map(function (s) {
+        return '<a class="slot" href="event.html?id=global-clinical-trials-congress">' +
+          '<div class="time">' + s[0] + '<span>to ' + s[1] + '</span></div>' +
+          '<div class="ti">' + s[2] + '</div>' +
+          '<div class="sp"><b>' + s[3] + '</b><span>' + s[4] + '</span></div>' +
+          '<div class="lo"><b>' + s[5] + '</b><span>' + s[6] + '</span></div>' +
+          '<div class="go">' + arrow + '</div>' +
+        '</a>';
+      }).join("");
+      var div = document.createElement("div");
+      div.className = "daypanel" + (d === "1" ? " active" : "");
+      div.setAttribute("data-day", d);
+      div.innerHTML = rows;
+      panels.appendChild(div);
+    });
+    $$(".daytab").forEach(function (tab) {
+      tab.addEventListener("click", function () {
+        $$(".daytab").forEach(function (t) { t.setAttribute("aria-selected", "false"); });
+        tab.setAttribute("aria-selected", "true");
+        var d = tab.getAttribute("data-day");
+        $$(".daypanel").forEach(function (p) { p.classList.toggle("active", p.getAttribute("data-day") === d); });
+      });
+    });
+  })();
+
+  /* ---------- Play buttons → jump to events ---------- */
+  $$(".play").forEach(function (p) {
+    p.addEventListener("click", function () {
+      var t = $("#forums") || $("#events");
+      if (t) t.scrollIntoView({ behavior: "smooth" });
+    });
+  });
+
+  /* ============================================================
      HOME SPEAKERS  (#homeSpeakers) — static, first 4
      ============================================================ */
   (function () {
     var wrap = $("#homeSpeakers");
     if (!wrap) return;
     wrap.innerHTML = SPEAKERS.slice(0, 4).map(function (s) {
-      return '<div class="spk"><div class="ph" style="background:' + s.c + '"><div class="ini">' + initials(s.n) + '</div></div>' +
+      return '<div class="spk">' + phHtml(s) +
         '<h4>' + s.n + '</h4><div class="role">' + s.r + '</div><div class="org">' + s.o + '</div></div>';
     }).join("");
   })();
@@ -343,7 +407,7 @@
     if (!wrap) return;
     var withModal = wrap.hasAttribute("data-modal");
     wrap.innerHTML = SPEAKERS.map(function (s) {
-      var inner = '<div class="ph" style="background:' + s.c + '"><div class="ini">' + initials(s.n) + '</div></div>' +
+      var inner = phHtml(s) +
         '<h4>' + s.n + '</h4><div class="role">' + s.r + '</div><div class="org">' + s.o + '</div>';
       return withModal
         ? '<button class="spk" data-spk="' + s.id + '" style="background:none;border:none;cursor:pointer;font:inherit;">' + inner + '</button>'
@@ -355,8 +419,9 @@
     function open(id) {
       var s = speakerById(id); if (!s) return;
       $("#spkModalBody").innerHTML =
-        '<div class="ph" style="background:' + s.c + ';width:96px;height:96px;border-radius:18px;position:relative;flex:none;">' +
-          '<div class="ini" style="position:absolute;inset:0;display:grid;place-items:center;font-family:var(--serif);font-size:34px;color:#fff;">' + initials(s.n) + '</div></div>' +
+        (s.img
+          ? '<div class="ph" style="width:96px;height:96px;border-radius:18px;flex:none;background-color:#4E1A44;background-image:url(\'https://images.unsplash.com/photo-' + s.img + '?auto=format&fit=crop&w=300&q=72\');background-size:cover;background-position:center top;"></div>'
+          : '<div class="ph" style="background:' + s.c + ';width:96px;height:96px;border-radius:18px;position:relative;flex:none;"><div class="ini" style="position:absolute;inset:0;display:grid;place-items:center;font-family:var(--serif);font-size:34px;color:#fff;">' + initials(s.n) + '</div></div>') +
         '<div><h3 style="font-size:24px;">' + s.n + '</h3>' +
         '<div style="font-family:var(--sans);color:var(--plum);font-weight:600;font-size:14px;margin:4px 0;">' + s.r + " · " + s.o + '</div>' +
         '<p style="font-family:var(--sans);color:var(--muted);font-size:15px;margin-top:12px;">' + s.bio + '</p></div>';
@@ -415,7 +480,7 @@
 
     var speakersHtml = (e.speakers || []).map(function (sid) {
       var s = speakerById(sid); if (!s) return "";
-      return '<div class="spk"><div class="ph" style="background:' + s.c + '"><div class="ini">' + initials(s.n) + '</div></div>' +
+      return '<div class="spk">' + phHtml(s) +
         '<h4>' + s.n + '</h4><div class="role">' + s.r + '</div><div class="org">' + s.o + '</div></div>';
     }).join("");
 

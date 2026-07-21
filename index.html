@@ -160,17 +160,27 @@
     </div>
   </section>
 
-  <!-- FEATURED EVENTS -->
-  <section class="sec">
+  <!-- VIDEO BAND -->
+  <section class="video" aria-label="Event highlights">
+    <button type="button" class="play" aria-label="Play highlights"></button>
+  </section>
+
+  <!-- UPCOMING FORUMS (agenda) -->
+  <section class="calendar" id="forums">
     <div class="wrap">
-      <div class="events-toolbar reveal" style="align-items:flex-end;">
-        <div class="sec-head" style="margin-bottom:0;">
-          <p class="eyebrow">Upcoming</p>
-          <h2>Featured events</h2>
+      <div class="cal-head">
+        <div>
+          <p class="eyebrow">Calendar · Sep 14–16, 2026</p>
+          <h2>Upcoming forums</h2>
         </div>
-        <a class="btn btn-ghost" href="events.html">View all 15 events →</a>
+        <a class="more" href="events.html">More Events <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
       </div>
-      <div class="events-grid reveal" id="featuredGrid" style="margin-top:36px;"></div>
+      <div class="daytabs" role="tablist" aria-label="Event days">
+        <button type="button" class="daytab" role="tab" aria-selected="true" data-day="1">Day #1 · Sep 14 2026</button>
+        <button type="button" class="daytab" role="tab" aria-selected="false" data-day="2">Day #2 · Sep 15 2026</button>
+        <button type="button" class="daytab" role="tab" aria-selected="false" data-day="3">Day #3 · Sep 16 2026</button>
+      </div>
+      <div id="daypanels"></div>
     </div>
   </section>
 
