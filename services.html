@@ -350,24 +350,47 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 <script>
   (function () {
-    // Cards are fully visible by default (CSS). GSAP only enhances on scroll,
-    // so if it fails to load the section still renders perfectly.
+    // Cards render fully via CSS by default; GSAP only enhances on scroll,
+    // so the section stays intact even if GSAP fails to load.
     if (!window.gsap || !window.ScrollTrigger) return;
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
     gsap.registerPlugin(ScrollTrigger);
-    var cards = gsap.utils.toArray('.stack-card .sc');
-    cards.forEach(function (sc, i) {
-      if (i >= cards.length - 1) return;
-      // Recede: shrink + dim each card as the next one swipes up over it.
-      gsap.to(sc, {
-        scale: 0.92, opacity: 0.45, ease: 'none',
-        scrollTrigger: {
-          trigger: cards[i + 1].closest('.stack-card'),
-          start: 'top bottom', end: 'top top', scrub: true
-        }
-      });
+
+    var cards = gsap.utils.toArray('.stack-card');
+    var n = cards.length;
+    if (!n) return;
+    var base = 110;  // where the top of the deck pins (below the sticky nav)
+    var step = 16;   // vertical peek between stacked cards
+
+    cards.forEach(function (card, i) {
+      var inner = card.querySelector('.sc');
+      var isLast = i === n - 1;
+
+      // Pin each card (except the last) so they build up into a deck.
+      if (!isLast) {
+        ScrollTrigger.create({
+          trigger: card,
+          start: 'top ' + (base + i * step),
+          endTrigger: cards[n - 1],
+          end: 'top ' + (base + (n - 1) * step),
+          pin: true,
+          pinSpacing: false
+        });
+        // Shrink + dim the card as the next one stacks over it.
+        gsap.to(inner, {
+          scale: 0.9, opacity: 0.55, ease: 'none', transformOrigin: 'center top',
+          scrollTrigger: {
+            trigger: cards[i + 1],
+            start: 'top ' + (base + (i + 1) * step),
+            end: 'top ' + (base + i * step),
+            scrub: true
+          }
+        });
+      }
     });
+
     ScrollTrigger.refresh();
+    window.addEventListener('load', function () { ScrollTrigger.refresh(); });
   })();
 </script>
 </body>
