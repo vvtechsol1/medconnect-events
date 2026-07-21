@@ -521,6 +521,27 @@ body.menu-open .drawer { transform: none; }
 .step h4 { font-size: 18px; margin: 10px 0 8px; }
 .step p { font-family: var(--sans); font-size: 14px; color: var(--muted); }
 
+/* ---------- Process stack (GSAP swipe cards) ---------- */
+.process-stack { background: var(--plum-deep); color: #fff; padding: 90px 0 110px; position: relative; overflow: hidden; }
+:root[data-theme="dark"] .process-stack { background: #0E0710; }
+.process-stack .eyebrow { color: #E9A7D4; }
+.process-stack .eyebrow::before { background: rgba(255,255,255,0.55); }
+.process-stack .sec-head h2 { color: #fff; }
+.process-stack .sec-head p { color: rgba(255,255,255,0.7); }
+.stack { position: relative; max-width: 920px; margin: 46px auto 0; }
+.stack-card { position: sticky; top: calc(var(--nav-h) + 28px); padding-top: calc(var(--i) * 20px); }
+.stack-card .sc { position: relative; overflow: hidden; border-radius: 24px; padding: 46px 46px 40px;
+  background: linear-gradient(158deg, #3a1834 0%, #1c0d18 62%);
+  border: 1px solid rgba(255,255,255,0.12); box-shadow: 0 40px 80px -40px rgba(0,0,0,0.8); transform-origin: center top; }
+.stack-card .sc-step { font-family: var(--sans); font-size: 12px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--magenta); display: inline-flex; align-items: center; gap: 12px; }
+.stack-card .sc-step::before { content: ""; width: 26px; height: 1.5px; background: var(--magenta); }
+.stack-card h3 { color: #fff; font-size: clamp(34px, 5vw, 58px); letter-spacing: -0.03em; margin: 16px 0 14px; }
+.stack-card .sc p { color: rgba(255,255,255,0.72); font-family: var(--sans); font-size: clamp(15px, 1.7vw, 18px); max-width: 46ch; margin: 0; }
+.stack-card .sc-tags { display: flex; flex-wrap: wrap; gap: 9px; margin-top: 26px; }
+.stack-card .sc-tags span { font-family: var(--sans); font-size: 11.5px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: rgba(255,255,255,0.85); border: 1px solid rgba(255,255,255,0.2); border-radius: 999px; padding: 8px 15px; }
+.stack-card .sc-num { position: absolute; top: 8px; right: 30px; font-family: var(--serif); font-weight: 600; font-size: clamp(120px, 18vw, 210px); line-height: 1; color: transparent; -webkit-text-stroke: 1.5px rgba(255,255,255,0.12); pointer-events: none; letter-spacing: -0.04em; }
+@media (max-width: 620px) { .stack-card .sc { padding: 34px 26px 30px; } .stack-card .sc-num { font-size: 96px; right: 16px; } }
+
 /* Sponsor tiers */
 .tiers { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; align-items: stretch; }
 @media (max-width: 860px) { .tiers { grid-template-columns: 1fr; } }
