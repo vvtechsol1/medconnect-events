@@ -202,7 +202,7 @@
 
   function eventCard(e) {
     var regLabel = e.region === "Global" ? "ONLINE" : e.region;
-    return '<a class="ev" href="event.html?id=' + e.id + '" aria-label="' + e.title + '">' +
+    return '<a class="ev" href="event?id=' + e.id + '" aria-label="' + e.title + '">' +
       '<div class="top" style="background:' + (CAT_COLOR[e.cat] || "#86286F") + '"></div>' +
       '<div class="pad">' +
         '<div class="row1">' +
@@ -308,7 +308,7 @@
     EVENTS.forEach(function (e) { counts[e.cat] = (counts[e.cat] || 0) + 1; });
     wrap.innerHTML = topics.map(function (t) {
       var n = counts[t.name] || 0;
-      return '<a class="topic" href="events.html?cat=' + encodeURIComponent(t.name) + '">' +
+      return '<a class="topic" href="events?cat=' + encodeURIComponent(t.name) + '">' +
         '<span class="tic" style="background:' + t.color + '1F;color:' + t.color + '">' +
           '<svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="' + t.ic + '" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>' +
         '<div><h4>' + t.name + '</h4><div class="tc">' + n + " upcoming event" + (n !== 1 ? "s" : "") + '</div></div>' +
@@ -355,7 +355,7 @@
     var arrow = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>';
     Object.keys(DAYS).forEach(function (d) {
       var rows = DAYS[d].map(function (s) {
-        return '<a class="slot" href="event.html?id=global-clinical-trials-congress">' +
+        return '<a class="slot" href="event?id=global-clinical-trials-congress">' +
           '<div class="time">' + s[0] + '<span>to ' + s[1] + '</span></div>' +
           '<div class="ti">' + s[2] + '</div>' +
           '<div class="sp"><b>' + s[3] + '</b><span>' + s[4] + '</span></div>' +
@@ -500,7 +500,7 @@
 
     host.innerHTML =
       '<section class="ed-hero"><div class="wrap inner">' +
-        '<div class="breadcrumb" style="color:rgba(255,255,255,0.7);"><a href="index.html">Home</a><span class="sep">/</span><a href="events.html">Events</a><span class="sep">/</span><span>' + e.title + '</span></div>' +
+        '<div class="breadcrumb" style="color:rgba(255,255,255,0.7);"><a href="./">Home</a><span class="sep">/</span><a href="events">Events</a><span class="sep">/</span><span>' + e.title + '</span></div>' +
         '<div class="tags"><span class="tag">' + e.cat + '</span><span class="tag">' + e.fmt + '</span><span class="tag">' + regLabel + '</span>' + (e.cpd ? '<span class="tag">CPD / CME accredited</span>' : '') + '</div>' +
         '<h1>' + e.title + '</h1>' +
         '<div class="ed-meta">' +
@@ -524,7 +524,7 @@
 
           '<h2 style="font-size:28px;margin:44px 0 20px;">Sponsors & exhibitors</h2>' +
           '<div class="sponsor-wall">' + sponsorsHtml + '</div>' +
-          '<a class="btn btn-ghost" href="sponsors.html" style="margin-top:22px;">Become a sponsor →</a>' +
+          '<a class="btn btn-ghost" href="sponsors" style="margin-top:22px;">Become a sponsor →</a>' +
 
           '<h2 style="font-size:28px;margin:44px 0 16px;">Venue & travel</h2>' +
           '<div class="venue-card"><div class="vi">' + pin() + '</div><div><b>' + e.venue + '</b><p>' + e.city + '. Full travel, accommodation and accessibility details are sent to all registered delegates. Online attendees receive Catalyst Live platform access.</p></div></div>' +
@@ -534,8 +534,8 @@
           '<div class="price">' + (e.price === "Free" || e.price === "Invite" ? e.price : "from " + e.price) + '</div>' +
           (e.earlybird ? '<div style="font-family:var(--sans);font-size:13px;color:var(--coral);font-weight:600;margin-top:6px;">' + e.earlybird + '</div>' : '') +
           '<div class="cd" id="countdown" data-deadline="' + e.deadline + '"></div>' +
-          '<a class="btn btn-primary btn-block btn-lg" href="contact.html?intent=register&event=' + encodeURIComponent(e.title) + '">Register now</a>' +
-          '<a class="btn btn-ghost btn-block" href="contact.html?intent=brochure&event=' + encodeURIComponent(e.title) + '" style="margin-top:10px;">Download brochure</a>' +
+          '<a class="btn btn-primary btn-block btn-lg" href="contact?intent=register&event=' + encodeURIComponent(e.title) + '">Register now</a>' +
+          '<a class="btn btn-ghost btn-block" href="contact?intent=brochure&event=' + encodeURIComponent(e.title) + '" style="margin-top:10px;">Download brochure</a>' +
           '<ul class="inc">' +
             '<li>' + tk() + 'Full access to all sessions & tracks</li>' +
             '<li>' + tk() + '90-day on-demand replays</li>' +
@@ -553,7 +553,7 @@
     if (mcta) {
       document.body.classList.add("has-mcta");
       mcta.innerHTML = '<div class="mp">from<b>' + e.price + '</b></div>' +
-        '<a class="btn btn-primary" href="contact.html?intent=register&event=' + encodeURIComponent(e.title) + '">Register now</a>';
+        '<a class="btn btn-primary" href="contact?intent=register&event=' + encodeURIComponent(e.title) + '">Register now</a>';
     }
 
     // Countdown
