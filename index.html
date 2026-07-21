@@ -419,29 +419,19 @@
     gsap.set(im1, { zIndex: 2 });   // big, back
     gsap.set(im2, { zIndex: 3 });   // small, front (overlaps)
 
-    var tl = gsap.timeline({ repeat: -1, defaults: { duration: 2.4, ease: 'power2.inOut' } });
+    var d = 2.6; // seconds per swap — non-stop, no pauses
+    var tl = gsap.timeline({ repeat: -1, defaults: { duration: d, ease: 'sine.inOut' } });
 
-    // Swap: im1 slides in front & shrinks, im2 slides back & grows
-    tl.addLabel('swap')
-      .set(im1, { zIndex: 4 }, 'swap')
-      .set(im2, { zIndex: 3 }, 'swap')
-      .to(im1, { xPercent: 30, yPercent: 22, scale: 0.76 }, 'swap')
-      .to(im2, { xPercent: -22, yPercent: -16, scale: 1.22 }, 'swap')
-      .addLabel('hold', '+=1')
-      // Swap back to the original arrangement
-      .set(im1, { zIndex: 2 }, 'hold')
-      .set(im2, { zIndex: 3 }, 'hold')
-      .to(im1, { xPercent: 0, yPercent: 0, scale: 1 }, 'hold')
-      .to(im2, { xPercent: 0, yPercent: 0, scale: 1 }, 'hold')
-      .to({}, { duration: 1 });
-
-    // Pause the loop while the section is off-screen (saves CPU)
-    if (window.IntersectionObserver) {
-      var io = new IntersectionObserver(function (es) {
-        es.forEach(function (e) { e.isIntersecting ? tl.play() : tl.pause(); });
-      }, { threshold: 0.15 });
-      io.observe(wrap);
-    }
+    // Phase 1: im1 slides to front & shrinks, im2 slides back & grows
+    tl.set(im1, { zIndex: 4 }, 0)
+      .set(im2, { zIndex: 3 }, 0)
+      .to(im1, { xPercent: 32, yPercent: 24, scale: 0.74 }, 0)
+      .to(im2, { xPercent: -24, yPercent: -18, scale: 1.24 }, 0)
+      // Phase 2: they glide straight back — continuous, no hold
+      .set(im1, { zIndex: 2 }, d)
+      .set(im2, { zIndex: 3 }, d)
+      .to(im1, { xPercent: 0, yPercent: 0, scale: 1 }, d)
+      .to(im2, { xPercent: 0, yPercent: 0, scale: 1 }, d);
   })();
 </script>
 </body>
