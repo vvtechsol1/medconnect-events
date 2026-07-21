@@ -324,6 +324,18 @@
   })();
 
   /* ============================================================
+     HOME SPEAKERS  (#homeSpeakers) — static, first 4
+     ============================================================ */
+  (function () {
+    var wrap = $("#homeSpeakers");
+    if (!wrap) return;
+    wrap.innerHTML = SPEAKERS.slice(0, 4).map(function (s) {
+      return '<div class="spk"><div class="ph" style="background:' + s.c + '"><div class="ini">' + initials(s.n) + '</div></div>' +
+        '<h4>' + s.n + '</h4><div class="role">' + s.r + '</div><div class="org">' + s.o + '</div></div>';
+    }).join("");
+  })();
+
+  /* ============================================================
      SPEAKERS GRID  (#spkGrid)  + optional profile modal
      ============================================================ */
   (function () {
