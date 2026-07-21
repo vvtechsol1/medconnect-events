@@ -85,6 +85,13 @@
 /* ---------- Reset / base ---------- */
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; scroll-padding-top: calc(var(--nav-h) + 12px); }
+
+/* Lenis smooth-scroll integration (prevents native/Lenis smoothing conflict/jerk) */
+html.lenis, html.lenis body { height: auto; }
+.lenis.lenis-smooth { scroll-behavior: auto !important; }
+.lenis.lenis-smooth [data-lenis-prevent] { overscroll-behavior: contain; }
+.lenis.lenis-stopped { overflow: hidden; }
+.lenis.lenis-smooth iframe { pointer-events: none; }
 body {
   margin: 0; font-family: var(--sans); background: var(--bg); color: var(--text);
   line-height: 1.65; -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility;
@@ -572,7 +579,9 @@ body.menu-open .drawer { transform: none; }
 /* Testimonial stack (frosted glass cards, reuses .stack / .stack-card pin mechanics) */
 .testi-stack { max-width: 780px; margin-bottom: 60px; }
 .tsc { position: relative; transform-origin: center top; text-align: center; min-height: 240px;
-  background: color-mix(in srgb, var(--surface) 74%, transparent);
+  background:
+    linear-gradient(155deg, rgba(199,125,20,0.16) 0%, rgba(199,125,20,0.05) 46%, rgba(199,125,20,0) 78%),
+    color-mix(in srgb, var(--surface) 80%, transparent);
   -webkit-backdrop-filter: blur(18px) saturate(1.35); backdrop-filter: blur(18px) saturate(1.35);
   border: 1px solid color-mix(in srgb, var(--line) 60%, transparent); border-radius: 22px; padding: 44px 48px; box-shadow: var(--sh);
   display: flex; flex-direction: column; align-items: center; justify-content: center; }
