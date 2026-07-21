@@ -277,7 +277,7 @@ body.menu-open .drawer { transform: none; }
 @media (max-width: 560px) { .grid-4 { grid-template-columns: 1fr; } }
 
 /* Feature / service card */
-.fcard { background: var(--surface); border: 1px solid var(--line); border-radius: var(--r); padding: 30px 26px; box-shadow: var(--sh-sm); transition: transform .25s var(--ease), box-shadow .3s var(--ease), border-color .25s; display: flex; flex-direction: column; }
+.fcard { background: linear-gradient(158deg, rgba(199,125,20,0.10) 0%, rgba(199,125,20,0.03) 46%, rgba(199,125,20,0) 76%), var(--surface); border: 1px solid var(--line); border-radius: var(--r); padding: 30px 26px; box-shadow: var(--sh-sm); transition: transform .25s var(--ease), box-shadow .3s var(--ease), border-color .25s; display: flex; flex-direction: column; }
 .fcard:hover { transform: translateY(-6px); box-shadow: var(--sh); border-color: color-mix(in srgb, var(--plum) 26%, var(--line)); }
 .fcard .ic { width: 52px; height: 52px; border-radius: 13px; display: grid; place-items: center; margin-bottom: 18px; background: var(--green-soft); color: var(--plum); flex: none; }
 .fcard h3 { font-size: 21px; letter-spacing: -0.02em; margin-bottom: 10px; }
