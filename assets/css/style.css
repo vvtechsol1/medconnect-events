@@ -136,8 +136,11 @@ p { margin: 0; }
 .btn-lg { padding: 16px 30px; font-size: 16px; }
 .btn-block { width: 100%; }
 
-/* ---------- Reveal on scroll ---------- */
-.reveal { opacity: 0; transform: translateY(22px); }
+/* ---------- Reveal on scroll ----------
+   Visible by default (no-JS / no-GSAP fallback). Hidden only once the
+   pre-paint `anim-init` flag is set, so GSAP can animate them in. */
+.reveal { }
+html.anim-init .reveal { opacity: 0; transform: translateY(30px); will-change: opacity, transform; }
 .reveal.in { opacity: 1; transform: none; transition: opacity .7s var(--ease), transform .7s var(--ease); }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }

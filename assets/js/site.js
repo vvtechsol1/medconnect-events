@@ -41,17 +41,15 @@
   /* ---------- Footer year ---------- */
   $$(".js-year").forEach(function (el) { el.textContent = new Date().getFullYear(); });
 
-  /* ---------- Reveal on scroll ---------- */
+  /* ---------- Reveal on scroll ----------
+     Handled by assets/js/anim.js (GSAP). This is only a safety net for when
+     anim.js / GSAP never run: show everything and drop the pre-paint hide. */
   (function () {
     var els = $$(".reveal");
     if (!els.length) return;
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-      els.forEach(function (el) { el.classList.add("in"); }); return;
-    }
-    var io = new IntersectionObserver(function (entries) {
-      entries.forEach(function (en) { if (en.isIntersecting) { en.target.classList.add("in"); io.unobserve(en.target); } });
-    }, { threshold: 0.12 });
-    els.forEach(function (el) { io.observe(el); });
+    // If GSAP-driven reveals are (or will be) active, let anim.js own it.
+    if (document.documentElement.classList.contains("anim-init") && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    els.forEach(function (el) { el.classList.add("in"); });
   })();
 
   /* ---------- Animated counters ---------- */
