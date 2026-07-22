@@ -392,13 +392,6 @@
     });
   })();
 
-  /* ---------- Play buttons → jump to events ---------- */
-  $$(".play").forEach(function (p) {
-    p.addEventListener("click", function () {
-      var t = $("#forums") || $("#events");
-      if (t) t.scrollIntoView({ behavior: "smooth" });
-    });
-  });
 
   /* ============================================================
      HOME SPEAKERS  (#homeSpeakers) — static, first 4

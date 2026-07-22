@@ -1,0 +1,2 @@
+# Canonical host: catalystintlcorp.com (no www)
+https://www.catalystintlcorp.com/* https://catalystintlcorp.com/:splat 301!

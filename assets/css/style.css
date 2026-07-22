@@ -442,12 +442,14 @@ body.menu-open .drawer { transform: none; }
 .cta-box p { font-family: var(--sans); color: rgba(255,255,255,0.85); font-size: 18px; margin: 16px auto 30px; max-width: 54ch; position: relative; }
 .cta-actions { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; position: relative; }
 
-/* ---------- Video band ---------- */
-.video { height: 460px; position: relative; display: grid; place-items: center;
+/* ---------- Image band + parallax reveal ----------
+   The band sticks while the next (opaque) section scrolls up over it. */
+.video { height: 460px; position: relative;
   background: linear-gradient(rgba(38,12,33,0.42),rgba(38,12,33,0.42)), url('https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=1700&q=72') center/cover; }
-.play { width: 92px; height: 92px; border-radius: 50%; background: rgba(255,255,255,0.95); display: grid; place-items: center; cursor: pointer; border: none; box-shadow: 0 20px 50px rgba(0,0,0,0.35); transition: transform .2s var(--ease); }
-.play:hover { transform: scale(1.08); }
-.play::after { content: ""; margin-left: 5px; border-left: 20px solid var(--plum); border-top: 13px solid transparent; border-bottom: 13px solid transparent; }
+.parallax-pair { position: relative; }
+.parallax-pair > .video { position: sticky; top: 0; z-index: 0; }
+.parallax-pair > .calendar { position: relative; z-index: 1; }
+@media (prefers-reduced-motion: reduce) { .parallax-pair > .video { position: relative; } }
 
 /* ---------- Calendar (dark plum agenda) ---------- */
 .calendar { background: var(--plum-deep); color: #fff; padding: 96px 0; position: relative; overflow: hidden; }
