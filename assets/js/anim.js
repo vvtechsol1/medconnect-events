@@ -85,7 +85,7 @@
   if (window.SplitText && document.fonts && document.fonts.ready) {
     try { gsap.registerPlugin(SplitText); } catch (e) {}
     document.fonts.ready.then(function () {
-      var paras = gsap.utils.toArray(".sec-head p, .split-copy p, .about-copy p, .cta-box p, .home-hero p.sub, .page-hero p, .lede");
+      var paras = gsap.utils.toArray(".sec-head p, .split-copy p, .about-copy p, .cta-box p, .home-hero p.sub, .page-hero p, .lede, .fcard p, .step p");
       paras.forEach(function (el) {
         try {
           SplitText.create(el, {
