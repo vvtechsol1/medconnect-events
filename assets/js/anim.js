@@ -61,10 +61,23 @@
     });
   }
 
-  /* ---------- Titles: subtle rise for the big page headings ---------- */
+  /* ---------- Hero titles: rise on load ---------- */
   gsap.utils.toArray(".home-hero h1, .page-hero h1, .ed-hero h1").forEach(function (h) {
     gsap.from(h, { opacity: 0, y: 34, duration: 0.9, ease: "power3.out", delay: 0.05 });
   });
+
+  /* ---------- Section titles: fade up on scroll ---------- */
+  var titles = gsap.utils.toArray(".sec-head h2, .split-copy h2, .about-copy h2, .cta-box h2, .quote-wrap h2");
+  if (titles.length) {
+    gsap.set(titles, { opacity: 0, y: 42 });
+    ScrollTrigger.batch(titles, {
+      start: "top 86%",
+      once: true,
+      onEnter: function (batch) {
+        gsap.to(batch, { opacity: 1, y: 0, duration: 0.95, ease: "power3.out", stagger: 0.1, overwrite: true });
+      }
+    });
+  }
 
   /* ---------- Gentle parallax on framed media ---------- */
   gsap.utils.toArray(".split-media").forEach(function (el) {
