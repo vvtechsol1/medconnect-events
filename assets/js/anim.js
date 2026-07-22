@@ -61,10 +61,33 @@
     });
   }
 
-  /* ---------- Hero titles: rise on load ---------- */
-  gsap.utils.toArray(".home-hero h1, .page-hero h1, .ed-hero h1").forEach(function (h) {
-    gsap.from(h, { opacity: 0, y: 34, duration: 0.9, ease: "power3.out", delay: 0.05 });
-  });
+  /* ---------- Hero heading: character reveal (SplitText, blur + rise) ---------- */
+  (function () {
+    var heroTitles = gsap.utils.toArray(".home-hero h1, .page-hero h1, .ed-hero h1");
+    if (!heroTitles.length) return;
+    if (window.SplitText && document.fonts && document.fonts.ready) {
+      try { gsap.registerPlugin(SplitText); } catch (e) {}
+      document.fonts.ready.then(function () {
+        heroTitles.forEach(function (h) {
+          try {
+            SplitText.create(h, {
+              type: "words, chars",
+              onSplit: function (self) {
+                return gsap.from(self.chars, {
+                  opacity: 0, yPercent: 60, filter: "blur(10px)",
+                  duration: 0.7, ease: "power3.out", stagger: 0.022
+                });
+              }
+            });
+          } catch (e) { gsap.set(h, { clearProps: "all" }); }
+        });
+      });
+    } else {
+      heroTitles.forEach(function (h) {
+        gsap.from(h, { opacity: 0, y: 34, duration: 0.9, ease: "power3.out" });
+      });
+    }
+  })();
 
   /* ---------- Section titles: fade up on scroll ---------- */
   var titles = gsap.utils.toArray(".sec-head h2, .split-copy h2, .about-copy h2, .cta-box h2, .quote-wrap h2");
