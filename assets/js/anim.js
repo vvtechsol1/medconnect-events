@@ -132,6 +132,25 @@
     });
   }
 
+  /* ---------- Logo strip: seamless horizontal marquee (plays in view) ---------- */
+  gsap.utils.toArray(".logos .lrow").forEach(function (row) {
+    try {
+      var items = Array.prototype.slice.call(row.children);
+      if (items.length < 2) return;
+      var track = document.createElement("div");
+      track.className = "logo-track";
+      items.forEach(function (it) { track.appendChild(it); });
+      items.forEach(function (it) { var c = it.cloneNode(true); c.setAttribute("aria-hidden", "true"); track.appendChild(c); });
+      row.classList.add("is-marquee");
+      row.appendChild(track);
+      var loop = gsap.to(track, { xPercent: -50, duration: 26, ease: "none", repeat: -1 });
+      ScrollTrigger.create({
+        trigger: row, start: "top bottom", end: "bottom top",
+        onToggle: function (self) { self.isActive ? loop.play() : loop.pause(); }
+      });
+    } catch (e) { /* leave the static logo row on any failure */ }
+  });
+
   /* ---------- Gentle parallax on framed media ---------- */
   gsap.utils.toArray(".split-media").forEach(function (el) {
     gsap.fromTo(el, { backgroundPositionY: "42%" }, {

@@ -299,7 +299,12 @@ body.menu-open .drawer { transform: none; }
 .logos { text-align: center; }
 .logos .ll { font-family: var(--sans); font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); margin-bottom: 22px; }
 .logos .lrow { display: flex; gap: 40px; justify-content: center; flex-wrap: wrap; align-items: center; }
-.logos .lrow span { font-family: var(--serif); font-weight: 600; font-size: 21px; color: var(--muted); opacity: 0.62; letter-spacing: -0.01em; }
+.logos .lrow span { font-family: var(--serif); font-weight: 600; font-size: 21px; color: var(--muted); opacity: 0.62; letter-spacing: -0.01em; white-space: nowrap; }
+/* GSAP horizontal marquee variant */
+.logos .lrow.is-marquee { flex-wrap: nowrap; justify-content: flex-start; overflow: hidden;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 7%, #000 93%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 7%, #000 93%, transparent); }
+.logo-track { display: flex; gap: 56px; width: max-content; flex: none; padding-right: 56px; align-items: center; }
 
 /* ---------- About (who we are) split ---------- */
 .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
