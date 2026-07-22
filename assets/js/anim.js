@@ -79,6 +79,36 @@
     });
   }
 
+  /* ---------- Paragraph text masking (GSAP SplitText) ----------
+     Splits body copy into lines and reveals each line rising out of a mask
+     as it scrolls into view. Runs after fonts load for correct line breaks. */
+  if (window.SplitText && document.fonts && document.fonts.ready) {
+    try { gsap.registerPlugin(SplitText); } catch (e) {}
+    document.fonts.ready.then(function () {
+      var paras = gsap.utils.toArray(".sec-head p, .split-copy p, .about-copy p, .cta-box p, .home-hero p.sub, .page-hero p, .lede");
+      paras.forEach(function (el) {
+        try {
+          SplitText.create(el, {
+            type: "lines",
+            mask: "lines",
+            autoSplit: true,
+            linesClass: "sp-line",
+            onSplit: function (self) {
+              return gsap.from(self.lines, {
+                yPercent: 115,
+                duration: 0.9,
+                ease: "power4.out",
+                stagger: 0.11,
+                scrollTrigger: { trigger: el, start: "top 86%", once: true }
+              });
+            }
+          });
+        } catch (e) { /* leave paragraph as-is on any failure */ }
+      });
+      ScrollTrigger.refresh();
+    });
+  }
+
   /* ---------- Gentle parallax on framed media ---------- */
   gsap.utils.toArray(".split-media").forEach(function (el) {
     gsap.fromTo(el, { backgroundPositionY: "42%" }, {
